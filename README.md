@@ -12,10 +12,8 @@ Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) w
 
 [See for yourself!](http://http://telescope-logger.meteor.com)
 
-Usage
+Installation
 ------------
-###Installation
-
 This is version 0.1 that indeed can be used for your development with Meteor. However, there's no fancy installation at this point - basically, you just need to copy a "lib" directory from this repo into your project and you should be set. Current version is done 
 with the ["auth" branch of meteor](https://github.com/meteor/meteor/wiki/Getting-Started-with-Auth), if you want to use it with master 4.1, just kill _global_logs.allow call in telescope.coffee. 
 Mind the dependencies, before it's automated do at least:
@@ -31,5 +29,19 @@ Mind the dependencies, before it's automated do at least:
 
 Yes, we'll make it easier in the future.
 
-
+Usage
+---------
+Somewhere in the common code of your meteor app call:
+```coffeescript
+TL = new TLog(TLog.LOGLEVEL_MAX,true)
+```
+and then when you want to log a message of a certain log level:
+```coffeescript
+TL.fatal("your message")
+TL.error("your message")
+TL.warn("your message")
+TL.info("your message")
+TL.verbose("your message")
+```
+See how it's done in this sample app and how it looks in the [live demo](http://http://telescope-logger.meteor.com)
 
