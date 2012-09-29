@@ -39,6 +39,8 @@
 
         </div>
         <div class="span8">
+            {{>sample_app}}
+
             {{>logs_bootstrap}}
         </div>
 
@@ -47,5 +49,24 @@
 </div>
 
 </body>
+
+<template name="sample_app">
+    <h5>Fool around and add some logs</h5>
+
+    <p>
+        <select id="server_or_client" class="sample_select">
+            <option value="server">Server</option>
+            <option value="client">Client</option>
+        </select>
+        <input id="log_message" type="text" placeholder="Your clever log message goes here"/>
+    </p>
+
+    <button class="btn btn-inverse" id="btn_fatal" severity="0">FATAL</button>
+    <button class="btn btn-danger" id="btn_error" severity="1">ERROR</button>
+    <button class="btn btn-warning" id="btn_warning" severity="2">WARN</button>
+    <button class="btn btn-info" id="btn_info" severity="3">INFO</button>
+    <button class="btn btn-success" id="btn_verbose" severity="4">VERBOSE</button>
+
+</template>
 
 
