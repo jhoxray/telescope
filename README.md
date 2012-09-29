@@ -29,5 +29,11 @@ Mind the dependencies, before it's automated do at least:
 
 Yes, we'll make it easier in the future.
 
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
+
 
 
