@@ -10,7 +10,7 @@ What does it do?
 ------------------
 Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output, optional logging to console, pretty output of both Client and Server logs using Twitter Bootstrap right in the browser.
 
-[See for yourself!](http://http://telescope-logger.meteor.com)
+[See for yourself!](http://telescope-logger.meteor.com)
 
 Installation
 ------------
@@ -52,7 +52,7 @@ To actually display the logs, plugin "logs_bootstrap" template anywhere in your 
 </div>
 ```
 
-Everything else is done automagically, as always is the case with Meteor. See how it's done in this sample app and how it looks in the [live demo](http://http://telescope-logger.meteor.com).
+Everything else is done automagically, as always is the case with Meteor. See how it's done in this sample app and how it looks in the [live demo](http://telescope-logger.meteor.com).
 
 
 API
