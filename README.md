@@ -43,5 +43,35 @@ TL.warn("your message")
 TL.info("your message")
 TL.verbose("your message")
 ```
-See how it's done in this sample app and how it looks in the [live demo](http://http://telescope-logger.meteor.com)
+To actually display the logs, plugin "logs_bootstrap" template anywhere in your Handlebars templates. E.g.:
+```html
+<div class="span8">
+  <h1>My cool logs</h1>
+
+  {{>logs_bootstrap}}
+</div>
+```
+
+Everything else is done automagically, as always is the case with Meteor. See how it's done in this sample app and how it looks in the [live demo](http://http://telescope-logger.meteor.com).
+
+
+API
+---------
+In addition to the functions above here's a short description of what else you may need.
+```coffeescript
+class TLog
+  #setting desired log level and whether you also want to output your log messages to the console (true or false)
+  constructor: (@_currentLogLevel, @_printToConsole)
+  
+  #log levels are defined as follows, so use TLog.LOGLEVEL_... when instantiating
+  @LOGLEVEL_FATAL = 0
+  @LOGLEVEL_ERROR = 1
+  @LOGLEVEL_WARNING = 2
+  @LOGLEVEL_INFO = 3
+  @LOGLEVEL_VERBOSE = 4
+  @LOGLEVEL_MAX = 5
+
+  #to change log level and console printing, use
+  setOptions: (loglevel, want_to_print = true)
+```
 
