@@ -1,6 +1,7 @@
 What is it?
 -------------
 This is a Telescope Logger (soon-to-be-a) package that provides simple, efficient and pretty logging for the [Meteor framework](http://meteor.com). 
+
 [Live demo app](http://http://telescope-logger.meteor.com)
 
 Why?
