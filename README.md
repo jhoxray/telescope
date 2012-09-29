@@ -34,6 +34,7 @@ Usage
 Somewhere in the common code of your meteor app call:
 ```coffeescript
 TL = new TLog(TLog.LOGLEVEL_MAX,true)
+#for other options, see API section below
 ```
 and then when you want to log a message of a certain log level:
 ```coffeescript
