@@ -1,0 +1,41 @@
+<template name="logs_bootstrap">
+    <table class="table table-condensed table-striped">
+        <thead>
+        </thead>
+        <tbody>
+        {{#each log_messages}}
+        <tr>
+            <td class="lb_timestamp">{{timestamp_text}}</td>
+            <td class="lb_loglevel"><span class="label {{lb_loglevel_decoration}}">{{loglevel_names loglevel}}</span></td>
+            {{#if isServer}}
+            <td class="lb_server"><span class="label label-inverse">SERVER</span></td>
+            {{else}}
+            <td class="lb_client"><span class="label">CLIENT</span></td>
+            {{/if}}
+            <td class="lb_message">{{message}}</td>
+        {{/each}}
+        </tbody>
+    </table>
+</template>
+
+
+<template name="logs_simple">
+    {{#each log_messages}}
+        {{full_message}}<br/>
+    {{/each}}
+</template>
+
+
+        <!--
+
+          <tr>
+              <td>{{timestamp_text}}</td>
+              {{#if isServer}}
+                <td>[SERVER]</td>
+              {{else}}
+                <td>[CLIENT]</td>
+              {{/if}}
+              <td>{{loglevel}}</td>
+              <td>{{message}}</td>
+          </tr>
+                  -->
