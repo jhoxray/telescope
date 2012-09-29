@@ -3,12 +3,16 @@ root = exports ? this
 
 _global_logs = new Meteor.Collection 'telescope_logs'
 
-#very insecure, yes
+#very insecure, yes.
+# TODO: make this configurable and add checking if it's an Auth branch or not (until it makes it to master)
 _global_logs.allow {
   insert:
     () -> true
+  update: ->
+    false
   remove: ->
     true
+
 }
 
 #main and static class implementing very basic logging. using class just to provide some encapsulation basically.
