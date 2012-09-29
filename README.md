@@ -17,6 +17,7 @@ Usage
 This is version 0.1 that indeed can be used for your development with Meteor. However, there's no fancy installation at this point - basically, you just need to copy a "lib" directory from this repo into your project and you should be set. Current version is done 
 with the ["auth" branch of meteor](https://github.com/meteor/meteor/wiki/Getting-Started-with-Auth), if you want to use it with master 4.1, just kill _global_logs.allow call in telescope.coffee. 
 Mind the dependencies, before it's automated do at least:
+
 	meteor add accounts-ui //optional, only with auth, but if you use it you probably added it anyway
 	meteor add bootstrap
 	meteor add less
