@@ -1,7 +1,7 @@
 What is it?
 -------------
 This is a Telescope Logger (soon-to-be-a) package that provides simple, efficient and pretty logging for the [Meteor framework](http://meteor.com). 
-Screenshot: ![Telescope Logs screenshot](github.com/jhoxray/telescope/pub/telescope.png)
+Screenshot: ![Telescope Logs screenshot](jhoxray.github.com/telescope/pub/telescope.png)
 [Live demo app](http://http://telescope-logger.meteor.com)
 
 Why?
