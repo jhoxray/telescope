@@ -3,6 +3,9 @@ TL = new TLog(TLog.LOGLEVEL_MAX,true)
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 resetTestMessages = ->
+  if TL.logCount() > 100
+    TL.clear()
+    TL.warn("Cleared logs as they grew to more than 100 records")
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
   TL.warn("Don't you think you should write this in Haskell?")
