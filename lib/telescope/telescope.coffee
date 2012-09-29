@@ -55,6 +55,9 @@ class TLog
   verbose: (msg)->
     @_log(msg,TLog.LOGLEVEL_VERBOSE)
 
+  currentLogLevelName: ->
+    TLog.LOGLEVEL_NAMES[@_currentLogLevel]
+
   #internal method doing the logging
   _log: (msg, loglevel = 3) ->
 

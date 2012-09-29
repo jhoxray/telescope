@@ -1,6 +1,5 @@
 <head>
-    <title>Flats! Da best databaze for FlatCoatedRetriver DOGZ!</title>
-    <link rel="shortcut icon" href="/img/favicon.ico">
+    <title>Telescope Logger sample app</title>
 </head>
 
 <body>
@@ -8,11 +7,37 @@
 <div class="container">
 
     <div class="row">
-
         <div class="span12">
+            <h1>Welcome to the Telescope Logger sample app</h1>
+            <div class="well">
+                This is a simple demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/telescope">Telescope Logger package</a> that provides
+                simple logging capabilities for the <a href="http://meteor.com">Meteor framework.</a> The actual example of how it looks is right below.
+            </div>
+        </div>
+
+        <div class="span4">
+    <h5>Why?</h5>
+            <div class="well">
+                I got frustrated with the need to switch between the terminal and Chrome's js console to keep track of Meteor app logs, plus needed a basic standard logging
+                package that can support different log levels and present all that in one place in a nice format.
+                </div>
+                <h5>What does it do?</h5>
+            <div class="well">
+                Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output,
+                optional logging to console, pretty output of both Client and Server logs using Twitter Bootstrap right in the browser.
+                </div>
+                <h5>Usage</h5>
+            <div class="well">
+                <p>For details, see <a href="https://github.com/jhoxray/telescope">Telescope Logger package</a> on GitHub (it contains this app and Telescope Logger library),
+                but in a nutshell you simply call <br/><code>TL=new TLog(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
+                code (that gets executed on both client and server) and then call the following obvious methods:
+                <code>TL.fatal("..."), error, warn, info, verbose</code>.
+                <p>To display the logs, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages. E.g., in this app it's in the column to the right.
+            </div>
 
 
-            <h1>One more time</h1>
+        </div>
+        <div class="span8">
             {{>logs_bootstrap}}
         </div>
 
@@ -23,18 +48,3 @@
 </body>
 
 
-<template name="navbar">
-    <a class="brand" href="/">Flats!</a>
-    <ul class="nav">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-                <li class="sort_by_name"><a href="#">Sort by Name</a></li>
-                <li><a class="sort_by_birthdate" href="#">Sort by Date of Birth</a></li>
-                <li class="divider"></li>
-                <li class="reset_data"><a href="#">Reset Data</a></li>
-            </ul>
-        </li>
-        <li><a href="#">About</a></li>
-    </ul>
-</template>
