@@ -76,3 +76,7 @@ class TLog
   setOptions: (loglevel, want_to_print = true)
 ```
 
+Feedback
+----------
+We'd love to hear what you think, whether it's useful and which other features you'd want to see in a proper Meteor logging framework - so please use the [issues mechanism](https://github.com/jhoxray/telescope/issues) here on github to share your thoughts and ideas!
+
