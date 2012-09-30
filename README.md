@@ -17,7 +17,7 @@ logging to console, pretty output of both Client and Server logs using Twitter B
 Installation
 ------------
 Telescope Logger is version 0.1.1 that indeed can be used for your development with Meteor. However, there's no fancy installation at this point - 
-basically, you just need to copy a "lib" directory from this repo into your project and you should be set. Should work with both 4.1 and  
+basically, you just need to copy a "lib" directory from this repo into your project and you should be set. Should work with both 4.1 and 
 ["auth" branch of meteor](https://github.com/meteor/meteor/wiki/Getting-Started-with-Auth).
 Mind the dependencies, before it's automated do at least:
 
