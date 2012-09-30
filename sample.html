@@ -10,9 +10,9 @@
         <div class="span12">
             <h1>Welcome to the Telescope Logger sample app</h1>
             <div class="well">
-                This is a simple demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/telescope">Telescope Logger package</a> that provides
+                This is a simple demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/telescope-logger">Telescope Logger package</a> that provides
                 simple logging for the <a href="http://meteor.com">Meteor framework.</a> The actual example of how it looks is right below. Logs are sortable, just
-                click on the column title.
+                click on the column title. Telescope Logger is currently version 0.1.1 and you may find it quite handy in your Meteor app development. We do :)
             </div>
         </div>
 
@@ -29,7 +29,8 @@
                 </div>
                 <h5>Usage</h5>
             <div class="well">
-                <p>For details, see <a href="https://github.com/jhoxray/telescope">Telescope Logger package</a> on GitHub (it contains this app and Telescope Logger library),
+                <p>Installation is as easy as<code>mrt add telescope</code>. Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
+                <p>For details, see <a href="https://github.com/jhoxray/telescope-logger">Telescope Logger package</a> on GitHub (it contains this app and Telescope Logger library),
                 but in a nutshell you simply call <br/><code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
                 code (that gets executed on both client and server) and then call the following obvious methods:
                 <code>TL.fatal("..."), error, warn, info, verbose</code>.
