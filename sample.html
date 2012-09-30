@@ -30,7 +30,7 @@
                 <h5>Usage</h5>
             <div class="well">
                 <p>For details, see <a href="https://github.com/jhoxray/telescope">Telescope Logger package</a> on GitHub (it contains this app and Telescope Logger library),
-                but in a nutshell you simply call <br/><code>TL=new TLog(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
+                but in a nutshell you simply call <br/><code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
                 code (that gets executed on both client and server) and then call the following obvious methods:
                 <code>TL.fatal("..."), error, warn, info, verbose</code>.
                 <p>To display the logs, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages. E.g., in this app it's in the column to the right.

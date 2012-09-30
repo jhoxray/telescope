@@ -1,26 +1,31 @@
-#do we need this?
-root = exports ? this
-
-_global_logs = new Meteor.Collection 'telescope_logs'
-
-#very insecure, yes.
-# TODO: make this configurable and add checking if it's an Auth branch or not (until it makes it to master)
-_global_logs.allow {
-  insert:
-    () -> true
-  update: ->
-    false
-  remove: ->
-    true
-
-}
-
-#main and static class implementing very basic logging. using class just to provide some encapsulation basically.
+# Class that hanles all the logging logic 
+#
+# @example Getting a logger that will print only WARNING and more severe messages both to db and console:
+#     TL = TLog.getLogger(TLog.LOGLEVEL_WARNING, true)
+#
 class TLog
   @_instance = undefined
 
-  @_getLogger: ->
-    @_instance?=new TLog(TLog.LOGLEVEL_MAX,true)
+  @_global_logs = new Meteor.Collection 'telescope_logs'
+
+  #very insecure, yes. For now this is the only dependency on auth branch so "?" let's us take care of this silently.
+  # TODO: make this configurable 
+  @_global_logs.allow? {
+    insert:
+      () -> true
+    update: ->
+      false
+    remove: ->
+      true
+  }
+
+  # Get a logger with options
+  #
+  # @param [TLog enum] loglevel desired loglevel, one of TLog.LOGLEVEL_FATAL,TLog.LOGLEVEL_ERROR,TLog.LOGLEVEL_WARNING,TLog.LOGLEVEL_INFO,TLog.LOGLEVEL_VERBOSE
+  # @param [Bool] want_to_print if true, log messages will be printed to the console as well
+  #
+  @getLogger: (loglevel = TLog.LOGLEVEL_MAX, want_to_print = true)->
+    @_instance?=new TLog(loglevel,want_to_print, false)
 
   @LOGLEVEL_FATAL = 0
   @LOGLEVEL_ERROR = 1
@@ -33,20 +38,28 @@ class TLog
     "FATAL", "ERROR", "WARNING", "INFO", "VERBOSE", "MAX"
   ]
 
-  constructor: (@_currentLogLevel, @_printToConsole)->
-    @_logs = _global_logs
+  constructor: (@_currentLogLevel, @_printToConsole, show_warning = true)->
+    @_logs = TLog._global_logs
     if Meteor.isServer
       Meteor.publish '_telescope_logs',()->
-        _global_logs.find {}, {sort: {timestamp: -1}, limit:100}
+        TLog._global_logs.find {}, {sort: {timestamp: -1}, limit:100}
     if Meteor.isClient
       Meteor.subscribe('_telescope_logs')
+    @warn("You should use TLog.getLogger(loglevel, want_to_print) method instead of a constructor! Constructor calls may be removed 
+      in the next versions of the package.") if show_warning
 
 
+  # Set options for a logger
+  #
+  # @param [TLog enum] loglevel desired (see getLogger())
+  # @param [Bool] whether to print to the console
+  #
   setOptions: (loglevel, want_to_print = true) ->
     if (loglevel>=0) and (loglevel<=3)
       @_currentLogLevel = loglevel
     @_printToConsole = want_to_print
 
+  # Main logging methods:
   fatal: (msg)->
     @_log(msg,TLog.LOGLEVEL_FATAL)
 
@@ -99,14 +112,13 @@ class TLog
 
   @_getLogs: (sort)->
     if sort
-      _global_logs.find({}, sort: sort)
+      @_global_logs.find({}, sort: sort)
     else
-      _global_logs.find {}, sort: {timestamp: -1}
+      @_global_logs.find {}, sort: {timestamp: -1}
 
+  #Ouch! This should be really protected once auth is figured out.
   clear: ->
     @_logs.remove {}
 
 
-
-###
 

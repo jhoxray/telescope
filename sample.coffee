@@ -1,5 +1,5 @@
 #instanciating global logger
-TL = new TLog(TLog.LOGLEVEL_MAX,true)
+TL = TLog.getLogger()
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 random_messages = [
@@ -53,7 +53,7 @@ if Meteor.isClient
           msg = random_messages[k]
 
         if source is "client"
-          #easy, simply calling log function
+          #easy, simply calling log function. BTW, DON'T use _log in your apps, it's a private method :)
           TL._log(msg,i)
         else
           #tricky, need to call an actual method on the server so that the message logs with correct source
