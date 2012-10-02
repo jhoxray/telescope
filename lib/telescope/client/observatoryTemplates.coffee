@@ -25,11 +25,11 @@ _.extend Template.logs_bootstrap,
 
 #events for a given template
   template_events: (tmpl)->
-    console.log("Got template: " + tmpl)
+    
     rt = []
     i = 0
     for tt of Template[tmpl].events
-      console.log("Got event: " + tt)
+      
       rt.push({_id:"id_event_no_"+i,name:tt})
       i++
     rt.sort()
@@ -89,10 +89,7 @@ _.extend Template.logs_bootstrap,
 
     #showing the source code for the chosen event
     "mouseenter .lb_template_events_list": (evt)->
-      console.log("mouse is over " + evt.target.getAttribute("eventName"))
-      console.log("Template: " + evt.target.getAttribute("templateName"))
       func = Template[evt.target.getAttribute("templateName")].events[evt.target.getAttribute("eventName")]
-      console.log(func)
       $("#lb_code_console").text(func.toString())
 
     #switching main tabs in the panel
@@ -100,12 +97,29 @@ _.extend Template.logs_bootstrap,
       tg = evt.target.getAttribute("href")
       $(".tab-pane").hide()
       $(tg).show()
-      
-
+    
     #Turning the Observatory panel on or off
+    #this is ugly but this is the only way it worked after 1hr of trying!!!
     "click #btn_toggle_logs": ->
-      $("#id_logs_bootstrap").toggle("fast")
+      #console.log($("#id_logs_bootstrap"))
+      #$("#id_logs_bootstrap").toggle("fast")
+      if $("#id_logs_bootstrap").hasClass("height50")
+        $("#id_logs_bootstrap").removeClass("height50")
+        $("#id_logs_bootstrap").addClass("height90")
+      else
+        if $("#id_logs_bootstrap").hasClass("height90")
+          $("#id_logs_bootstrap").removeClass("height90")
+          $("#id_logs_bootstrap").hide("fast")
+        else
+          if $("#id_logs_bootstrap").hasClass("height25")
+            $("#id_logs_bootstrap").removeClass("height25")
+            $("#id_logs_bootstrap").addClass("height50")
+          else
+            $("#id_logs_bootstrap").addClass("height25")
+            $("#id_logs_bootstrap").show("fast")
 
+      
+    
     #Sort functions go below; 
     #TODO: put them all in one and optimize
     "click #lbh_timestamp": ->

@@ -92,18 +92,26 @@ tr.no_border,
 
 
 // Main panel styling. 
-// TODO: need a less generic name not to interfere with ppl's tags;
+.height25 {
+	height: 25%;
+}
 
-.panel {
+.height50 {
+	height: 50%;
+}
+
+.height90 {
+	height: 90%;
+}
+
+.observatory_panel {
 	//overflow: scroll;
 	width: 90%;
 	left: 50%;
 	margin: 0 0 0 -47%;
-
 	min-width: 968px;
-
+	//height: 50%;
 	color: @logs_main_color;
-	
 	//clear: both;
 	position: fixed;
 	//top: 50px;
@@ -119,14 +127,12 @@ tr.no_border,
 	/*-moz-border-radius-bottomright: 20px;
 	-webkit-border-bottom-right-radius: 20px;*/
 	//width: 600px;
-	height: 50%;
 	padding: 10px 10px 10px 40px;
 	filter: alpha(opacity=85);
 	opacity: .85;
-	
 }
 
-.panel a, .panel a:visited{
+.observatory_panel a, .observatory_panel a:visited{
 	margin: 0;
 	padding: 0;
 	color: #9FC54E;
@@ -134,7 +140,7 @@ tr.no_border,
 	border-bottom: 1px solid #9FC54E;
 }
 
-a.trigger{
+a.observatory_trigger{
 	background: #333; //@panel_bg_color;
 	color: @observatory_trigger_color;
 	position: fixed;
@@ -156,7 +162,7 @@ a.trigger{
 	display: block;
 }
 
-a.trigger:hover{
+a.observatory_trigger:hover{
 
 	background:#222222 85% 55% no-repeat;
 	border:1px solid #444444;
