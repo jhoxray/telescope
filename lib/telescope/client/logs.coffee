@@ -1,9 +1,41 @@
 #Twitter Bootstrap formatted template
 _.extend Template.logs_bootstrap,
+
+
+#setting initial sort order for the logs  
   created: ->
     Session.set("bl_sort_desc", true)
     Session.set("bl_sort_by","timestamp")
+    
 
+#Filling Session keys
+  session_keys: ->
+    rt = new Array()
+    i = 0
+    for key of Session.keys
+      rt[i] = {"key": key, "value":Session.get(key)}
+      i++
+    rt
+
+#Templates
+  templates: ->
+    rt = Inspect.methods(Template)
+    rt.sort()
+    rt
+
+#events for a given template
+  template_events: (tmpl)->
+    console.log("Got template: " + tmpl)
+    rt = []
+    i = 0
+    for tt of Template[tmpl].events
+      console.log("Got event: " + tt)
+      rt.push({_id:"id_event_no_"+i,name:tt})
+      i++
+    rt.sort()
+    rt
+
+#filling relevant log messages
   log_messages: ->
     sort_order = if Session.get("bl_sort_desc") then -1 else 1
     sort = {timestamp: sort_order}
@@ -12,10 +44,16 @@ _.extend Template.logs_bootstrap,
       when "source" then sort = {isServer: sort_order}
     TLog._getLogs(sort)
 
+#helper to get log level / severity names
   loglevel_names: (i)->
-    "cool" + i
     TLog.LOGLEVEL_NAMES[i]
 
+#timestamp formatting helper for the display
+  format_timestamp: (ts)->
+    d = new Date(ts)
+    TLog._convertTime(d)
+
+#applying class to labels showing loglevel / severity
   lb_loglevel_decoration: ->
     switch @loglevel
       when TLog.LOGLEVEL_FATAL then cl = "label-inverse"
@@ -24,13 +62,52 @@ _.extend Template.logs_bootstrap,
       when TLog.LOGLEVEL_INFO then cl = "label-info"
       when TLog.LOGLEVEL_VERBOSE then cl = "label-success"
 
+#apllying class to the message text (<td>) based on loglevel
+  lb_loglevel_msg_decoration: ->
+    switch @loglevel
+      when TLog.LOGLEVEL_FATAL then cl = "lb_msg_error"
+      when TLog.LOGLEVEL_ERROR then cl = "lb_msg_error"
+      when TLog.LOGLEVEL_WARNING then cl = "lb_msg_warning"
+
+#apllying class to the whole log row based on loglevel
   lb_loglevel_row_decoration: ->
+    # Turning OFF for now as this is needed for the "light" scheme
+    ###
     switch @loglevel
       when TLog.LOGLEVEL_FATAL then cl = "error"
       when TLog.LOGLEVEL_ERROR then cl = "error"
       when TLog.LOGLEVEL_WARNING then cl = "warning"
+    ###
 
   events:
+    #Trying to make "~" work but it's not working...
+    ###
+    "keydown": (evt)->
+      #$("#id_logs_bootstrap").toggle("fast")
+      console.log("key pressed: " + evt.which)
+    ###
+
+    #showing the source code for the chosen event
+    "mouseenter .lb_template_events_list": (evt)->
+      console.log("mouse is over " + evt.target.getAttribute("eventName"))
+      console.log("Template: " + evt.target.getAttribute("templateName"))
+      func = Template[evt.target.getAttribute("templateName")].events[evt.target.getAttribute("eventName")]
+      console.log(func)
+      $(".lb_console").html("<pre class=\"prettyprint lang-js\">"+func.toString()+"</pre>")
+
+    #switching main tabs in the panel
+    "click #lb_main_tab": (evt)->
+      tg = evt.target.getAttribute("href")
+      $(".tab-pane").hide()
+      $(tg).show()
+      
+
+    #Turning the Observatory panel on or off
+    "click #btn_toggle_logs": ->
+      $("#id_logs_bootstrap").toggle("fast")
+
+    #Sort functions go below; 
+    #TODO: put them all in one and optimize
     "click #lbh_timestamp": ->
       #TLog._getLogger().verbose("clicked on timestamp")
       Session.set("bl_sort_by","timestamp")

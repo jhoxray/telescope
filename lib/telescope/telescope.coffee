@@ -34,6 +34,8 @@ class TLog
   @LOGLEVEL_VERBOSE = 4
   @LOGLEVEL_MAX = 5
 
+  @limit = 1000
+
   @LOGLEVEL_NAMES = [
     "FATAL", "ERROR", "WARNING", "INFO", "VERBOSE", "MAX"
   ]
@@ -42,7 +44,7 @@ class TLog
     @_logs = TLog._global_logs
     if Meteor.isServer
       Meteor.publish '_telescope_logs',()->
-        TLog._global_logs.find {}, {sort: {timestamp: -1}, limit:100}
+        TLog._global_logs.find {}, {sort: {timestamp: -1}, limit:TLog.limit}
     if Meteor.isClient
       Meteor.subscribe('_telescope_logs')
     @warn("You should use TLog.getLogger(loglevel, want_to_print) method instead of a constructor! Constructor calls may be removed 
@@ -106,6 +108,14 @@ class TLog
   _convertTimestamp: (timestamp)->
     st = timestamp.getUTCDate() + '/' + timestamp.getUTCMonth() + '/'+timestamp.getUTCFullYear() + ' ' +
       timestamp.getUTCHours()+ ':' + timestamp.getUTCMinutes() + ':' + timestamp.getUTCSeconds() + '.' + timestamp.getUTCMilliseconds()
+
+  @_convertDate: (timestamp)->
+    st = timestamp.getUTCDate() + '/' + timestamp.getUTCMonth() + '/'+timestamp.getUTCFullYear()
+
+  @_convertTime: (timestamp, ms=true)->
+    ts = timestamp.getUTCHours()+ ':' + timestamp.getUTCMinutes() + ':' + timestamp.getUTCSeconds() 
+    ts += '.' + timestamp.getUTCMilliseconds() if ms
+    ts
 
   _ps: (s)->
     '['+s+']'

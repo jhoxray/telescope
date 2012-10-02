@@ -13,6 +13,7 @@
                 This is a simple demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/telescope-logger">Telescope Logger package</a> that provides
                 simple logging for the <a href="http://meteor.com">Meteor framework.</a> The actual example of how it looks is right below. Logs are sortable, just
                 click on the column title. Telescope Logger is currently version 0.1.1 and you may find it quite handy in your Meteor app development. We do :)
+           
             </div>
         </div>
 
@@ -27,6 +28,14 @@
                 Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output,
                 optional logging to console, pretty output of both Client and Server logs using Twitter Bootstrap right in the browser.
                 </div>
+            
+
+        </div>
+        <div class="span8">
+            {{>sample_app}}
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
                 <h5>Usage</h5>
             <div class="well">
                 <p>Installation is as easy as<code>mrt add telescope</code>. Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
@@ -37,18 +46,13 @@
                 <p>To display the logs, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages. E.g., in this app it's in the column to the right.
             </div>
 
-
-        </div>
-        <div class="span8">
-            {{>sample_app}}
-
-            {{>logs_bootstrap}}
         </div>
 
     </div>
 
 </div>
 
+{{>logs_bootstrap}}
 </body>
 
 <template name="sample_app">
