@@ -93,7 +93,7 @@ _.extend Template.logs_bootstrap,
       console.log("Template: " + evt.target.getAttribute("templateName"))
       func = Template[evt.target.getAttribute("templateName")].events[evt.target.getAttribute("eventName")]
       console.log(func)
-      $("#lb_code_console").html(func.toString())
+      $("#lb_code_console").text(func.toString())
 
     #switching main tabs in the panel
     "click #lb_main_tab": (evt)->
