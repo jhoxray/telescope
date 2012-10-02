@@ -1,5 +1,5 @@
 <head>
-    <title>Telescope Logger sample app</title>
+    <title>Observatory logging&amp;monitoring sample app</title>
 </head>
 
 <body>
@@ -8,47 +8,60 @@
 
     <div class="row">
         <div class="span12">
-            <h1>Welcome to the Telescope Logger sample app</h1>
+            <h2>Observatory logging &amp; monitoring sample app</h2>
             <div class="well">
-                This is a simple demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/telescope-logger">Telescope Logger package</a> that provides
-                simple logging for the <a href="http://meteor.com">Meteor framework.</a> The actual example of how it looks is right below. Logs are sortable, just
-                click on the column title. Telescope Logger is currently version 0.1.1 and you may find it quite handy in your Meteor app development. We do :)
+                This is a demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/observatory">Observatory Logging &amp; Monitoring</a> - a package that provides
+                powerful logging, inspection and monitoring for your <a href="http://meteor.com">Meteor framework</a> applications. 
+                Observatory panel is controlled by pressing the "O!" button in the bottom-left corner of the page: you can have it small, medium,
+                large or completely turned off. By moving between tabs you can analyze logs (updated live), your application's templates with
+                events, as well as monitor other internals (currently, Session state, more to come).
+                Observatory is currently version 0.1.5 and you may find it quite handy in your Meteor app development. We do :)
+
             </div>
         </div>
 
         <div class="span4">
     <h5>Why?</h5>
             <div class="well">
-                I got frustrated with the need to switch between the terminal and Chrome's js console to keep track of Meteor app logs, plus needed a basic standard logging
-                package that can support different log levels and present all that in one place in a nice format.
+                We got frustrated with the need to switch between the terminal and Chrome's js console to keep track of Meteor app logs, plus needed a basic standard logging
+                package that can support different log levels and present all that in one place in a nice format. Then kinda got carried away. If you
+                are thinking "IDE", then yup, that's what we are thinking eventually. Someday. Maybe...
                 </div>
                 <h5>What does it do?</h5>
             <div class="well">
-                Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output,
+                <ul>
+                <li>Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output,
                 optional logging to console, pretty output of both Client and Server logs using Twitter Bootstrap right in the browser.
+                <li>Provides live monitoring of your app's templates with all events (they tend to become too many very fast, so keeping track of
+                    all of them in one place is very useful) and some other internals (currently, Session object)
+                </ul>
                 </div>
-                <h5>Usage</h5>
-            <div class="well">
-                <p>Installation is as easy as<code>mrt add telescope</code>. Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
-                <p>For details, see <a href="https://github.com/jhoxray/telescope-logger">Telescope Logger package</a> on GitHub (it contains this app and Telescope Logger library),
-                but in a nutshell you simply call <br/><code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
-                code (that gets executed on both client and server) and then call the following obvious methods:
-                <code>TL.fatal("..."), error, warn, info, verbose</code>.
-                <p>To display the logs, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages. E.g., in this app it's in the column to the right.
-            </div>
-
+            
 
         </div>
         <div class="span8">
             {{>sample_app}}
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                
+                <h5>Usage</h5>
+            <div class="well">
+                <p>Installation is as easy as<code>mrt add observatory</code>. Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
+                <p>For details, see <a href="https://github.com/jhoxray/observatory">Observatory package</a> on GitHub,
+                but in a nutshell you simply call <br/><code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
+                code (that gets executed on both client and server) and then call the following obvious methods:
+                <code>TL.fatal("..."), error, warn, info, verbose</code>.
+                <p>To display the main Observatory panel, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages, 
+                    preferrably right before closing "body" tag.
+            </div>
 
-            {{>logs_bootstrap}}
         </div>
 
     </div>
 
 </div>
 
+{{>logs_bootstrap}}
 </body>
 
 <template name="sample_app">
