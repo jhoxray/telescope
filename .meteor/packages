@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 accounts-ui
-bootstrap
 accounts-password
 backbone
 underscore
@@ -12,4 +11,5 @@ coffeescript
 less
 madewith
 spiderable
+bootstrap
 code-prettify
