@@ -20,9 +20,14 @@ resetTestMessages = ->
     TL.warn("Cleared logs as they grew to more than 500 records")
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
-  TL.warn("Don't you think you should write this in Haskell?")
-  TL.info("Boring informational message")
-  TL.verbose("Really long and full of insights text about how your app is doing this and that and whatever bells and whistles you still want to add")
+  TL.warn("Don't you think you should write this in Haskell?","templates")
+  TL.verbose("Really long and full of insights text about 
+    how your app is doing this and that and whatever bells and whistles you still want to add.
+    Also showing multiline and other related functionality. \nLog messages are printed in <pre> tags so you are free 
+    to enter really long and text-formatted messages here - such as code fragments
+    \n\tfn = function() {\n\t\treturn true;\n\t};")
+  TL.info("Observatory supports different log levels / severity")
+  TL.info("Also, you may want to add an optional module name to easier sort the logs. Like here.","my module")
   
 
 inspectObject = (obj)->
