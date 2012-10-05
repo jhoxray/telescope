@@ -1,0 +1,1 @@
+../meteor/meteor deploy --debug observatory.meteor.com
