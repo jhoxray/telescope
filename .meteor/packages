@@ -9,7 +9,6 @@ backbone
 underscore
 coffeescript
 less
-madewith
 spiderable
 bootstrap
 code-prettify

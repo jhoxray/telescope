@@ -1,90 +1,131 @@
-<head>
-    <title>Observatory logging&amp;monitoring sample app</title>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Observatory: powerful logging and monitoring package for Meteor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Observatory: powerful logging and monitoring package for Meteor">
+    <meta name="author" content="SuperstringSoftware.com">
 </head>
 
 <body>
 
-<div class="container">
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-    <div class="row">
-        <div class="span12">
-            <h2>Observatory logging &amp; monitoring sample app</h2>
-            <div class="well">
-                This is a demo app to illustrate capabilities of the <a href="https://github.com/jhoxray/observatory">Observatory Logging &amp; Monitoring</a> - a package that provides
-                powerful logging, inspection and monitoring for your <a href="http://meteor.com">Meteor framework</a> applications. 
-                Observatory panel is controlled by pressing the "O!" button in the bottom-left corner of the page: you can have it small, medium,
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <div class="logo"></div>
+            <p>
+                Logging &amp; monitoring for <a href="http://meteor.com">Meteor framework</a> since 2012.</p>
+            <p>
+                Observatory makes your <a href="http://meteor.com">Meteor</a> application development a breeze by providing 
+                <a href="#">easy logging API</a>, key application <a href="#">internals monitoring</a> and 
+                <a href="#">integrated javascript console</a> right here in the browser.
+                This site <em>is itself</em> a Meteor app and has Observatory installed. See the panel below? Check it out 
+                and grab a copy for your project in two easy steps: <code>mrt add observatory</code> in the shell
+                and <code>&#123;&#123;>logs_bootstrap&#125;&#125; &#60;/body&#62;</code> in your templates.
+                    
+            </p>
+        </div>
+
+      
+      <h4>Add some logs to see them updating live:</h4>
+        <div class="sample_app">
+
+        {{>sample_app}}
+        </div>
+      
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span10 offset1">
+            <h2>Why?</h2>
+          <p>We got frustrated with the need to switch between the terminal and Chrome's js console to keep track of Meteor app logs, plus needed a basic standard logging
+                package that can support different log levels and present all that in one place in a nice format. Then kinda got carried away. If you
+                are thinking "IDE", then yup, that's what we are thinking eventually. Someday. Maybe...</p>
+                <p>
+                    Observatory panel is controlled by pressing the "O!" button in the bottom-left corner of the page: you can have it small, medium,
                 large or completely turned off. By moving between tabs you can analyze logs (updated live), your application's templates with
                 events, as well as monitor other internals (currently, Session state, more to come).
                 Observatory is currently version 0.1.6 and you may find it quite handy in your Meteor app development. We do :)
-            
-
-            </div>
-            <div class="alert"><strong>Note:</strong> this demo app currently features development version of Observatory, in the stable package there's no theme change and module name support yet. It will be released soon.
-                </div>
-        </div>
-
-        <div class="span4">
-    <h5>Why?</h5>
-            <div class="well">
-                We got frustrated with the need to switch between the terminal and Chrome's js console to keep track of Meteor app logs, plus needed a basic standard logging
-                package that can support different log levels and present all that in one place in a nice format. Then kinda got carried away. If you
-                are thinking "IDE", then yup, that's what we are thinking eventually. Someday. Maybe...
-                </div>
-                <h5>What does it do?</h5>
-            <div class="well">
+                </p>
+          
+        
+          <h2>What does it do?</h2>
+            <p>
                 <ul>
                 <li>Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output,
                 optional logging to console, pretty output of both Client and Server logs using Twitter Bootstrap right in the browser.
                 <li>Provides live monitoring of your app's templates with all events (they tend to become too many very fast, so keeping track of
                     all of them in one place is very useful) and some other internals (currently, Session object)
                 </ul>
-                </div>
+            </p>
             
-
-        </div>
-        <div class="span8">
-            {{>sample_app}}
-                <p>&nbsp;</p>
-                <p>&nbsp;</p>
-                
-                <h5>Usage</h5>
-            <div class="well">
+          
+       
+          <h2>Usage</h2>
+            
                 <p>Installation is as easy as<code>mrt add observatory</code>. Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
                 <p>For details, see <a href="https://github.com/jhoxray/observatory">Observatory package</a> on GitHub,
                 but in a nutshell you simply call <br/><code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
                 code (that gets executed on both client and server) and then call the following obvious methods:
                 <code>TL.fatal("..."), error, warn, info, verbose</code>.
                 <p>To display the main Observatory panel, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages, 
-                    preferrably right before closing "body" tag.
-            </div>
-
-
-
+                    preferrably right before closing "body" tag.</p>
+          
         </div>
+      </div>
 
-    </div>
+      <hr>
 
-</div>
+      <footer>
+        <p>&copy; SuperstringSoftware Ventures 2012</p>
+      </footer>
 
-{{>logs_bootstrap}}
+    </div> <!-- /container -->
+
+
+ {{>logs_bootstrap}} 
 </body>
 
 <template name="sample_app">
-    <h5>Fool around and add some logs</h5>
+    
 
     <p>
+        
         <select id="server_or_client" class="sample_select">
             <option value="server">Server</option>
             <option value="client">Client</option>
         </select>
         <input id="log_message" type="text" placeholder="Your clever log message goes here"/>
-    </p>
+    
 
     <button class="btn btn-inverse" id="btn_fatal" severity="0">FATAL</button>
     <button class="btn btn-danger" id="btn_error" severity="1">ERROR</button>
     <button class="btn btn-warning" id="btn_warning" severity="2">WARN</button>
     <button class="btn btn-info" id="btn_info" severity="3">INFO</button>
     <button class="btn btn-success" id="btn_verbose" severity="4">VERBOSE</button>
+    </p>
 
 </template>
 
