@@ -9,20 +9,15 @@
 
 <body>
 
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top" id="topNavbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#usage">Usage</a></li>
+              <li><a href="#contribution">Contributing and feedback</a></li>
 
             </ul>
             <span class="label label-success pull-right">Observatory current version is 0.1.7</span>            
@@ -34,14 +29,14 @@
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div id="home" class="hero-unit">
         <div class="logo"></div>
             <p>
                 Logging &amp; monitoring for <a href="http://meteor.com">Meteor framework</a> since 2012.</p>
             <p>
                 Observatory makes your <a href="http://meteor.com">Meteor</a> application development a breeze by providing 
-                <a href="#">easy logging API</a>, key application <a href="#">internals monitoring</a> and 
-                <a href="#">integrated javascript console</a> all nicely presented right in the browser.
+                <a href="#docLogging">easy logging API</a>, key application <a href="#docMonitoring">internals monitoring</a> and 
+                <a href="#docConsole">integrated javascript console</a> all nicely presented right in the browser.
                 This site <em>is itself</em> a Meteor app and has Observatory installed. See the panel below? Check it out 
                 and grab a copy for your project: <code>mrt add observatory</code> in the shell
                 and <code>&#123;&#123;>logs_bootstrap&#125;&#125; &#60;/body&#62;</code> in your application templates.
@@ -54,7 +49,7 @@
 
       
       <h4>Add some logs to see them updating live:</h4>
-        <div class="sample_app">
+        <div id="logs" class="sample_app">
 
         {{>sample_app}}
         </div>
@@ -62,40 +57,97 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span10 offset1">
-            <h2>Why?</h2>
+        <div class="span8 offset1">
+            <h3 id="why">Why?</h3>
           <p>We got frustrated with the need to switch between the terminal and Chrome's js console to keep track of Meteor app logs, plus needed a basic standard logging
-                package that can support different log levels and present all that in one place in a nice format. Then kinda got carried away. If you
-                are thinking "IDE", then yup, that's what we are thinking eventually. Someday. Maybe...</p>
-                <p>
-                    Observatory panel is controlled by pressing the "O!" button in the bottom-left corner of the page: you can have it small, medium,
-                large or completely turned off. By moving between tabs you can analyze logs (updated live), your application's templates with
-                events, as well as monitor other internals (currently, Session state, more to come).
-                Observatory is currently version 0.1.6 and you may find it quite handy in your Meteor app development. We do :)
-                </p>
+                package that can support different log levels and present all that in one place in a nice format. Then kinda got carried away.</p>
           
         
-          <h2>What does it do?</h2>
+          <h3 id="what">What does it do?</h3>
             <p>
                 <ul>
                 <li>Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE) with corresponding methods for message output,
-                optional logging to console, pretty output of both Client and Server logs using Twitter Bootstrap right in the browser.
-                <li>Provides live monitoring of your app's templates with all events (they tend to become too many very fast, so keeping track of
-                    all of them in one place is very useful) and some other internals (currently, Session object)
+                optional logging to console, pretty output of both Client and Server logs right in the browser
+                </li>
+                <li>Provides live monitoring of your app's templates with all events (they tend to become too many very fast, so keeping track of all of them in one place is very useful) and some other internals (currently, Session object)</li>
+                <li><span class="label label-warning">Coming soon!</span> Integrated javascript console that allows you to execute arbitrary javascript client <em>and server</em> side right in your running application</li>
                 </ul>
             </p>
             
           
        
-          <h2>Usage</h2>
+          <h3 id="usage">Usage</h3>
             
-                <p>Installation is as easy as<code>mrt add observatory</code>. Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
-                <p>For details, see <a href="https://github.com/jhoxray/observatory">Observatory package</a> on GitHub,
-                but in a nutshell you simply call <br/><code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true)</code> once in your app's common
-                code (that gets executed on both client and server) and then call the following obvious methods:
-                <code>TL.fatal("..."), error, warn, info, verbose</code>.
-                <p>To display the main Observatory panel, just plugin <code>logs_bootstrap</code> Handlebars template anywhere in your html pages, 
-                    preferrably right before closing "body" tag.</p>
+                <p>Observatory is a <a href="https://atmosphere.meteor.com">meteorite package</a> so installation is as easy as 
+                running <code>mrt add observatory</code> in the shell and plugging 
+                <code>&#123;&#123;>logs_bootstrap&#125;&#125;</code> somewhere in your templates, preferably before
+                the  <code>&#60;/body&#62;</code> tag. </p>
+                <p>
+                If you don't like meteorite, you can install Observatory manually from 
+                <a href="https://github.com/jhoxray/observatory">its' Git repository</a> by copying the contents 
+                into your meteor application folder (e.g., in the lib/), killing package.js and installing
+                dependencies (bootstrap, coffeescript, underscore, less).</p>
+                <p>Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
+
+                <h5 id="docPanel">Using the panel</h5>
+                <p>
+                    Click the "O!" button in the bottom left corner of the page to switch between Observatory panel modes:
+                    small is useful to monitor latest logs, while medium and large provide full-featured panel with both logging
+                    and other capabilities described below. Do try changing the theme, too!
+                </p>
+
+                <h5 id="docLogging">Logging</h5>
+                <p>
+                    In your application code call something like <code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true);</code>
+                    (first argument is desired log level - messages with log level &#60;= that will be logged -
+                    and the second is whether you also want to log to the console).
+                    To log a message call one of the following methods:</p>
+                    <p><code>TL.fatal("application failed drastically","optional module name");<br/>
+                        TL.error("some error occurred","optional module name");<br/>
+                        TL.warn("a warning message","optional module name");<br/>
+                        TL.info("just for your information","optional module name");<br/>
+                        TL.verbose("logging every single detail","optional module name");<br/>
+                    </code></p>
+                
+                <p>
+                    To change the options after getting the logger, call <code>TL.setOptions(loglevel, want_to_print = true)</code>. 
+                    Supported log levels are: <code>Tlog.LOGLEVEL_FATAL, TLog.LOGLEVEL_ERROR, TLog.LOGLEVEL_WARNING,
+                    TLog.LOGLEVEL_INFO, TLog.LOGLEVEL_VERBOSE</code>. Pass one of these to either <code>getLogger()</code> or
+                    <code>setOptions()</code> calls.
+
+                </p>
+
+                <h5 id="docMonitoring">Application internals monitoring</h5>
+                <p>
+                    Curently, Observatory provides you with the list of all Templates in your application,
+                    list of all of each template's events with ability to glance at the code, and Session
+                    state monitoring. 
+                </p>
+                <p>
+                    As Meteor matures, we plan to add other useful objects monitoring, e.g., users once auth
+                    is finished, and likely something around Collections as well.
+                </p>
+
+                <h5 id="docConsole">Integrated javascript console</h5>
+                <p><span class="label label-warning">Coming soon!</span> Integrated javascript console that allows you to execute arbitrary javascript client <em>and server</em> side right in your running application - ultimate in debugging.</p>
+                <p><span class="label label-important">NOTE!</span> This is an obvious security breach if left in the production
+                    deployment so make sure you turn it off in any version other than your development environment!</p>
+
+
+                <h3 id="contribution">Contributing</h3>
+                <p>If you'd like to contribute to development or styling new themes for Observatory, 
+                    <code>git clone https://github.com/jhoxray/observatory.git</code> and then follow
+                    the usual pull request routine. Any help is welcome!</p>
+                <p>
+                    If you'd like to submit an idea, suggestion or report a bug, 
+                    <a href="https://github.com/jhoxray/observatory/issues?state=open">create a new GitHub issue.</a>
+                </p>
+
+                <h3>Revision history</h3>
+                For revision history <a href="https://github.com/jhoxray/observatory#readme">see the README on github.</a>
+
+                
+                
           
         </div>
       </div>
@@ -103,13 +155,13 @@
       <hr>
 
       <footer>
-        <p>&copy; SuperstringSoftware Ventures 2012</p>
+        <p>&copy; SuperstringSoftware 2012; logo by <a href="https://github.com/SachaG">SachaG</a></p>
       </footer>
 
     </div> <!-- /container -->
 
 
- {{>logs_bootstrap}} 
+ {{>logs_bootstrap}}
 </body>
 
 <template name="sample_app">
