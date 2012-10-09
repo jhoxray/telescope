@@ -15,9 +15,9 @@ random_messages = [
 #putting some log messages
 resetTestMessages = ->
   
-  if TL.logCount() > 500
+  if TL.logCount() > 300
     TL.clear()
-    TL.warn("Cleared logs as they grew to more than 500 records")
+    TL.warn("Cleared logs as they grew to more than 300 records")
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
   TL.warn("Don't you think you should write this in Haskell?","templates")
@@ -65,7 +65,7 @@ fn = Meteor.Collection
 #starting up Meteor and ensuring some log messages are put into db
 Meteor.startup ->
   if Meteor.isServer
-    TL.clear()
+    #TL.clear()
     TL.info("Starting up the app on the server")
     resetTestMessages()
     #inspectObject(Meteor)
