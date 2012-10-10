@@ -16,7 +16,7 @@ random_messages = [
 resetTestMessages = ->
   
   if TL.logCount() > 300
-    TL.clear()
+    TLog._clear()
     TL.warn("Cleared logs as they grew to more than 300 records")
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
