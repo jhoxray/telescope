@@ -1,3 +1,28 @@
+if Meteor.isClient
+  Meteor.pages
+    '/':
+      to: "main"
+      as: "main"
+      nav: "main"
+
+    '/logging':
+      to: "logging_template"
+      as: "logging_template"
+      nav: 'logging'
+
+    '/tests':
+      to: 'tests'
+      as: 'tests'
+      nav: 'tests'
+
+    "*":
+      to: "notFound"
+    #before: setLayout
+
+  Handlebars.registerHelper "navClassFor", (nav, options) ->
+    if Meteor.router.navEquals(nav) then "active" else ""
+
+
 #instanciating global logger
 TL = TLog.getLogger()
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
