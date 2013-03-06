@@ -24,7 +24,7 @@ if Meteor.isClient
 
 
 #instanciating global logger
-TL = TLog.getLogger()
+TL = TLog.getLogger(TLog.LOGLEVEL_MAX)
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 TL.allowRemove()
