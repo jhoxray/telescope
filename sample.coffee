@@ -27,6 +27,10 @@ if Meteor.isClient
 TL = TLog.getLogger()
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
+TL.allowRemove()
+
+Session.set "bl_default_panel", "half"
+
 random_messages = [
   "Ah! Trying to trick the system?"
   "Come on! You can do better than that!"
