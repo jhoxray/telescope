@@ -121,23 +121,30 @@
 
                 <h5 id="docLogging">Logging</h5>
                 <p>
-                    In your application code call something like <code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true);</code>
+                    In your application code call something like <code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true,true);</code>
                     (first argument is desired log level - messages with log level &#60;= that will be logged -
-                    and the second is whether you also want to log to the console).
+                    the second is whether you also want to log to the console, and the last is whether you want to log
+                    the currently logged in user ID with each message).
                     To log a message call one of the following methods:</p>
                 <p><code>TL.fatal("application failed drastically","optional module name");<br/>
                     TL.error("some error occurred","optional module name");<br/>
                     TL.warn("a warning message","optional module name");<br/>
                     TL.info("just for your information","optional module name");<br/>
                     TL.verbose("logging every single detail","optional module name");<br/>
+                    TL.debug("some debugging stuff","optional module name");<br/><br/>
+
+                    TL.trace(error,"additional message about error","optional module name");<br/>
+                    TL.dir(obj,"additional message about error","optional module name");<br/>
                 </code></p>
 
                 <p>
-                    To change the options after getting the logger, call <code>TL.setOptions(loglevel, want_to_print = true)</code>.
+                    Last 2 methods are new in 0.1.9 and eliminate some boilerplate in handling errors in catch
+                    statements and when you need to make a quick-n-dirty object inspection.<br/>
+                    To change the options after getting the logger, call <code>TL.setOptions(loglevel, want_to_print = true, log_user = false)</code>.
                     Supported log levels are: <code>Tlog.LOGLEVEL_FATAL, TLog.LOGLEVEL_ERROR, TLog.LOGLEVEL_WARNING,
-                    TLog.LOGLEVEL_INFO, TLog.LOGLEVEL_VERBOSE</code>. Pass one of these to either <code>getLogger()</code> or
+                    TLog.LOGLEVEL_INFO, TLog.LOGLEVEL_VERBOSE, TLog.LOGLEVEL_DEBUG</code>. Pass one of these to either <code>getLogger()</code> or
                     <code>setOptions()</code> calls. There's more details, full API documentation is
-                    <a href="https://github.com/jhoxray/observatory#readme">available on github</a>.
+                    <a href="https://github.com/jhoxray/observatory#readme" target="_blank">available on github</a>.
 
                 </p>
 
@@ -170,10 +177,6 @@
 
                 <h3>Revision history</h3>
                 For revision history <a href="https://github.com/jhoxray/observatory#readme">see the README on github.</a>
-
-
-
-
             </div>
         </div>
 
