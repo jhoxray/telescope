@@ -27,7 +27,7 @@ if Meteor.isClient
 TL = TLog.getLogger(TLog.LOGLEVEL_MAX)
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
-TL.allowRemove()
+TL.allowRemove -> false
 
 Session.set "bl_default_panel", "half"
 
