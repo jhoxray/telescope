@@ -6,13 +6,19 @@
   },
   "dependencies": {
     "basePackages": {
-      "mini-pages": {}
+      "mini-pages": {},
+      "observatory": {
+        "path": "../Orion/packages/observatory"
+      }
     },
     "packages": {
       "mini-pages": {
         "git": "https://github.com/cmather/meteor-mini-pages.git",
         "tag": "v0.3.0",
         "commit": "3de8b93dd4355ebbdcfaed7891350b349ee54815"
+      },
+      "observatory": {
+        "path": "../Orion/packages/observatory"
       },
       "page-js": {
         "git": "https://github.com/tmeasday/meteor-page-js.git",

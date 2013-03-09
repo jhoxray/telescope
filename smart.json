@@ -1,5 +1,8 @@
 {
   "packages": {
-    "mini-pages": {}
+    "mini-pages": {},
+      "observatory": {
+          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory/"
+      }
   }
 }
