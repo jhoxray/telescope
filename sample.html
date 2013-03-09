@@ -50,6 +50,7 @@
             <!-- <p>Don't know what Meteor or Meteorite is? <a href="#">Read this tutorial</a> to get you started.
             </p>-->
         </div>
+
     {{{yield}}}
         <hr>
 
@@ -58,12 +59,19 @@
         </footer>
 
     </div> <!-- /container -->
-
-
 </template>
 
   <template name="main">
 
+      <div class="alert">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>NOTE:</strong> This app showcases development version of Observatory which may be different from the
+          one set up via "mrt add observatory".
+      </div>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>NEW!</strong> Toggle Observatory panel and Session by clicking "ctrl-~" and "~" keys.
+      </div>
 
   </template>
 
