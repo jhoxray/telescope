@@ -2,7 +2,7 @@
   "packages": {
     "mini-pages": {},
       "observatory": {
-          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory/"
+          "path": "Your Path To checked out observatory!"
       }
   }
 }
