@@ -29,7 +29,7 @@
               <li class="{{navClassFor 'tests'}}"><a href="/tests">Test Framework</a></li>
 
             </ul>
-            <span class="label label-success pull-right">Observatory current version is 0.1.9</span>
+            <span class="label label-success pull-right">Observatory current version is 0.2.0</span>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -47,8 +47,8 @@
                 <a href="/logging#docMonitoring">internals monitoring</a> and
                 <a href="/tests">visual integrated test framework</a> all nicely presented right in the browser.
                 This site <em>is itself</em> a Meteor app and has Observatory installed. See the panel below? Check it out
-                (toggle panel modes by clicking the "O!" button in the bottom left corner) and grab a copy for your project:
-                <code>mrt add observatory</code> in the shell
+                (toggle panel modes by clicking the "O!" and "S!" buttons in the bottom left corner) and grab a copy for your project:
+                <code><a href="http://oortcloud.github.com/meteorite/">mrt</a> add observatory</code> in the shell
                 and <code>&#123;&#123;>logs_bootstrap&#125;&#125; &#60;/body&#62;</code> in your application templates. Yes,
                 it's <em>that</em> easy.
             </p>
@@ -73,6 +73,10 @@
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>NOTE:</strong> This app showcases development version of Observatory which may be different from the
           one set up via "mrt add observatory".
+      </div>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>NEW!</strong> 0.2.0 released on March, 18, 2013!
       </div>
       <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -106,6 +110,10 @@
                     <li>Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE, DEBUG) with corresponding methods for message output,
                         optional logging to console, pretty output of both Client and Server logs right in the browser
                     </li>
+                    <li>
+                        Optional logging of currently logged-in users. Panel displays username, first email address (user.emails[0].address)
+                        and finally userId if none of the previous options are found.
+                    </li>
                     <li>Provides live monitoring of your app's templates with all events
                         (they tend to become too many very fast, so keeping track of all of them in one place is very useful),
                         helpers and key callbacks (created, rendered, destroyed), as well as
@@ -113,7 +121,7 @@
                     <li>
                         Due to the above, Observatory can be used as a useful tool to quickly understand what a Meteor
                         app is doing - just install it to the app you want to analyze and there you go, you have an
-                        easier visual navigation of the internals!
+                        easy visual navigation of how templates work and what's in Session!
                     </li>
                     </ul>
                 </p>
@@ -135,7 +143,7 @@
 
                 <h5 id="docPanel">Using the panel</h5>
                 <p>
-                    Click the "O!" button in the bottom left corner of the page to switch between Observatory panel modes:
+                    Click the "O!" and "S!" buttons in the bottom left corner of the page to switch between Observatory panel modes:
                     small is useful to monitor latest logs, while medium and large provide full-featured panel with both logging
                     and other capabilities described below. Since 0.1.9 you can use "ctrl + ~" and "~" keys to toggle the panels.
 
@@ -180,7 +188,7 @@
                 <h5 id="docMonitoring">Application internals monitoring</h5>
                 <p>
                     Curently, Observatory provides you with the list of all Templates in your application,
-                    list of all of each template's events, helpres and key callbacks with ability to glance at the code
+                    list of all of each template's events, helpers and key callbacks with ability to glance at the code
                     (see "Templates Internals" tab on the main panel),
                     as well as Session state monitoring (separate Session panel - click "S!" or press "~" key).
                 </p>
@@ -200,6 +208,18 @@
                 </p>
 
                 <h3>Revision history</h3>
+                <h5>0.2.0: March 18, 2013</h5>
+
+                First minor release with "real" Meteor (auth, users, ui improvements).
+
+                <ul>
+                    <li>Properly logging currently logged-in user</li>
+                    <li>Works with Meteor 0.5.9</li>
+                    <li>Code highlighting in the Templates Internals</li>
+                    <li>Session as a separate panel</li>
+                    <li>Unit testing moved to a <a href="https://github.com/superstringsoftware/observatory-testing">separate package</a></li>
+                </ul>
+
                 <h5>0.1.9: March 6, 2013</h5>
 
                 Update to support Meteor 0.5.7:
@@ -277,6 +297,17 @@
                     <a href="http://chaijs.com/">Chai</a> for assertion checks. Server tests won't run on
                     Meteor.com as they don't have Chai installed, but if you npm install chai locally you'll be
                     able to run server side tests as well.
+                </p>
+                <p>
+                    Currently, Testing is not included in the main Observatory package and is available
+                    in a separate github repo: <a href="https://github.com/superstringsoftware/observatory-testing">
+                    observatory-testing
+                    </a>.
+                </p>
+                <p>
+                    BTW, we would appreciate help with development of the testing framework for observatory - e.g.,
+                    modifying a standard package such as Mocha may be a much better idea! Leave a comment on github
+                    if you'd like to help!
                 </p>
             </div>
         </div>
