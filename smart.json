@@ -2,10 +2,10 @@
   "packages": {
     "mini-pages": {},
       "observatory": {
-          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory/"
+          "path": "Path to where observatory lives on your system (or mrt add observatory)"
       },
       "observatory-testing": {
-          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory-testing/"
+          "path": "Path to where observatory-testing lives on your system"
       }
   }
 }
