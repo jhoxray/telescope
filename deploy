@@ -1,1 +1,1 @@
-mrt deploy --debug observatory.meteor.com
+mrt deploy --debug observatoryjs.com
