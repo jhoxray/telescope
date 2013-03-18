@@ -13,6 +13,11 @@
 
 
 <template name="layout">
+
+    <a href="https://github.com/jhoxray/observatory">
+        <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 10000" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+    </a>
+
 <div class="navbar navbar-fixed-top" id="topNavbar">
       <div class="navbar-inner">
         <div class="container">
@@ -44,7 +49,8 @@
                 This site <em>is itself</em> a Meteor app and has Observatory installed. See the panel below? Check it out
                 (toggle panel modes by clicking the "O!" button in the bottom left corner) and grab a copy for your project:
                 <code>mrt add observatory</code> in the shell
-                and <code>&#123;&#123;>logs_bootstrap&#125;&#125; &#60;/body&#62;</code> in your application templates.
+                and <code>&#123;&#123;>logs_bootstrap&#125;&#125; &#60;/body&#62;</code> in your application templates. Yes,
+                it's <em>that</em> easy.
             </p>
 
             <!-- <p>Don't know what Meteor or Meteorite is? <a href="#">Read this tutorial</a> to get you started.
@@ -100,9 +106,16 @@
                     <li>Supports different log levels (currently FATAL, ERROR, WARNING, INFO, VERBOSE, DEBUG) with corresponding methods for message output,
                         optional logging to console, pretty output of both Client and Server logs right in the browser
                     </li>
-                    <li>Provides live monitoring of your app's templates with all events (they tend to become too many very fast, so keeping track of all of them in one place is very useful) and some other internals (currently, Session object)</li>
-                    <li><span class="label label-warning">Coming soon!</span> Integrated javascript console that allows you to execute arbitrary javascript client <em>and server</em> side right in your running application</li>
-                </ul>
+                    <li>Provides live monitoring of your app's templates with all events
+                        (they tend to become too many very fast, so keeping track of all of them in one place is very useful),
+                        helpers and key callbacks (created, rendered, destroyed), as well as
+                        some other internals (currently, Session object). </li>
+                    <li>
+                        Due to the above, Observatory can be used as a useful tool to quickly understand what a Meteor
+                        app is doing - just install it to the app you want to analyze and there you go, you have an
+                        easier visual navigation of the internals!
+                    </li>
+                    </ul>
                 </p>
 
 
@@ -124,7 +137,9 @@
                 <p>
                     Click the "O!" button in the bottom left corner of the page to switch between Observatory panel modes:
                     small is useful to monitor latest logs, while medium and large provide full-featured panel with both logging
-                    and other capabilities described below. Do try changing the theme, too!
+                    and other capabilities described below. Since 0.1.9 you can use "ctrl + ~" and "~" keys to toggle the panels.
+
+                    Do try changing the theme, too!
                 </p>
 
                 <h5 id="docLogging">Logging</h5>
@@ -142,7 +157,7 @@
                     TL.debug("some debugging stuff","optional module name");<br/><br/>
 
                     TL.trace(error,"additional message about error","optional module name");<br/>
-                    TL.dir(obj,"additional message about error","optional module name");<br/>
+                    TL.dir(obj,"additional message about the object to inspect","optional module name");<br/>
                 </code></p>
 
                 <p>
@@ -151,27 +166,28 @@
                     To change the options after getting the logger, call <code>TL.setOptions(loglevel, want_to_print = true, log_user = false)</code>.
                     Supported log levels are: <code>Tlog.LOGLEVEL_FATAL, TLog.LOGLEVEL_ERROR, TLog.LOGLEVEL_WARNING,
                     TLog.LOGLEVEL_INFO, TLog.LOGLEVEL_VERBOSE, TLog.LOGLEVEL_DEBUG</code>. Pass one of these to either <code>getLogger()</code> or
-                    <code>setOptions()</code> calls. There's more details, full API documentation is
+                    <code>setOptions()</code> calls.
+                    </p>
+
+                <p>
+                    There's more details, full API documentation, including how Observatory stores logs, which fields are
+                    logged etc is
                     <a href="https://github.com/jhoxray/observatory#readme" target="_blank">available on github</a>.
 
                 </p>
 
+
                 <h5 id="docMonitoring">Application internals monitoring</h5>
                 <p>
                     Curently, Observatory provides you with the list of all Templates in your application,
-                    list of all of each template's events with ability to glance at the code, and Session
-                    state monitoring.
+                    list of all of each template's events, helpres and key callbacks with ability to glance at the code
+                    (see "Templates Internals" tab on the main panel),
+                    as well as Session state monitoring (separate Session panel - click "S!" or press "~" key).
                 </p>
                 <p>
                     As Meteor matures, we plan to add other useful objects monitoring, e.g., users once auth
                     is finished, and likely something around Collections as well.
                 </p>
-
-                <h5 id="docConsole">Integrated javascript console</h5>
-                <p><span class="label label-warning">Coming soon!</span> Integrated javascript console that allows you to execute arbitrary javascript client <em>and server</em> side right in your running application - ultimate in debugging.</p>
-                <p><span class="label label-important">NOTE!</span> This is an obvious security breach if left in the production
-                    deployment so make sure you turn it off in any version other than your development environment!</p>
-
 
                 <h3 id="contribution">Contributing</h3>
                 <p>If you'd like to contribute to development or styling new themes for Observatory,
@@ -184,7 +200,45 @@
                 </p>
 
                 <h3>Revision history</h3>
-                For revision history <a href="https://github.com/jhoxray/observatory#readme">see the README on github.</a>
+                <h5>0.1.9: March 6, 2013</h5>
+
+                Update to support Meteor 0.5.7:
+
+                <ul>
+                    <li>New logging methods (debug, trace, dir)</li>
+                    <li>Meteor Authorization support</li>
+                    <li>Some clean up of the logs display in the panel</li>
+                    <li>Fixing template methods inspection for the new Meteor syntax</li>
+                    <li>Preview version of unit testing</li>
+                </ul>
+
+                <h5>0.1.8: Oct, 2012</h5>
+
+                Minor code clean up, ability to clear logs.
+
+                <h5>0.1.7</h5>
+
+                Some styling changes, module names support:
+
+                <ul>
+                    <li>added 2 themes: dark and light, switchable on the fly.</li>
+                    <li>added module names support to easier sort through logs.</li>
+                    <li>some css cleanup, started restyling to get away from Bootstrap dependency (still dependent though so if you use css names that are the same as Twitter Bootstrap is using you may get weird effects in your app - will remove in a future version).
+                    </li>
+                </ul>
+
+
+                <h5>0.1.5, 0.1.6</h5>
+
+                Bottom sliding panel with tabs added, monitoring / inspection capabilities added, files renamed, some cleanup started
+
+                <h5>0.1.1</h5>
+
+                Clean up for visibility / encapsulation, now need to use TLog.getLogger() instead of constructing directly
+
+                <h5>0.1</h5>
+
+                Initial commit
             </div>
         </div>
 </template>

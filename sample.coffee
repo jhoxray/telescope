@@ -1,3 +1,10 @@
+#instanciating global logger
+TL = TLog.getLogger(TLog.LOGLEVEL_MAX, true, true)
+TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
+
+TLog.allowRemove -> false
+
+
 if Meteor.isClient
   Meteor.pages
     '/':
@@ -23,13 +30,8 @@ if Meteor.isClient
     if Meteor.router.navEquals(nav) then "active" else ""
 
 
-#instanciating global logger
-TL = TLog.getLogger(TLog.LOGLEVEL_MAX)
-TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
-TL.allowRemove -> false
-
-Session.set "bl_default_panel", "half"
+  Session.set "bl_default_panel", "half"
 
 random_messages = [
   "Ah! Trying to trick the system?"
