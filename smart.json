@@ -1,4 +1,8 @@
 {
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "devel"
+  },
   "packages": {
     "mini-pages": {}
   }
