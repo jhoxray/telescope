@@ -4,6 +4,12 @@
     "branch": "devel"
   },
   "packages": {
-    "mini-pages": {}
+    "mini-pages": {},
+      "observatory": {
+          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory/"
+      },
+      "observatory-testing": {
+          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory-testing"
+      }
   }
 }

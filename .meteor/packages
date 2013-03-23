@@ -7,6 +7,7 @@ underscore
 coffeescript
 less
 spiderable
-bootstrap
-code-prettify
 mini-pages
+bootstrap
+observatory
+observatory-testing

@@ -1,3 +1,10 @@
+#instanciating global logger
+TL = TLog.getLogger(TLog.LOGLEVEL_MAX, true, true)
+TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
+
+TLog.allowRemove -> false
+
+
 if Meteor.isClient
   Meteor.pages
     '/':
@@ -23,13 +30,8 @@ if Meteor.isClient
     if Meteor.router.navEquals(nav) then "active" else ""
 
 
-#instanciating global logger
-TL = TLog.getLogger()
-TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
-TL.allowRemove()
-
-Session.set "bl_default_panel", "half"
+  Session.set "bl_default_panel", "half"
 
 random_messages = [
   "Ah! Trying to trick the system?"
@@ -70,26 +72,6 @@ dump_state1 = ->
   for key of Session.key_deps
     console.log(key + ": " + Session.get(key))
 
-###
-dump_state = ->
-  tt = Session
-  console.log "=== Session state ==="
-  for key of tt.key_deps
-    ids = _.keys(tt.key_deps[key])
-    continue  unless ids.length
-    console.log key + ": " + _.reject(ids, (x) ->
-      x is "_once"
-    ).join(" ")
-  for key of tt.key_value_deps
-    for value of tt.key_value_deps[key]
-      ids = _.keys(tt.key_value_deps[key][value])
-      continue  unless ids.length
-      console.log key + "(" + value + "): " + _.reject(ids, (x) ->
-        x is "_once"
-      ).join(" ")
-###
-
-fn = Meteor.Collection
 
 #starting up Meteor and ensuring some log messages are put into db
 Meteor.startup ->
