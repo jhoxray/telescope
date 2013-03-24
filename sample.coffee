@@ -1,9 +1,17 @@
+if Meteor.isServer
+  connect = __meteor_bootstrap__.require('connect')
+  __meteor_bootstrap__.app.use(connect.logger())
+
+  ###
+  #s.meteor_session?.collectionViews
+  for s in Meteor.default_server.stream_server.open_sockets
+    console.log "========================================================================================================"
+    console.dir s.meteor_session?.socket
+  ###
+
 #instanciating global logger
 TL = TLog.getLogger(TLog.LOGLEVEL_MAX, true, true)
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
-
-TLog.allowRemove -> false
-
 
 if Meteor.isClient
   Meteor.pages
@@ -95,15 +103,20 @@ Meteor.startup ->
 
 if Meteor.isServer
   #defining a server function for logging a server-originated log from the client. Confusing, eh?
+  TLog.allowRemove -> false
+
   Meteor.methods
     log_remote: (msg,level)->
+      #s.meteor_session?.collectionViews
+      for s in Meteor.default_server.stream_server.open_sockets
+        console.log "========================================================================================================"
+        console.dir s.meteor_session?.socket
       TL._log(msg,level)
 
 
 #template that handles Sample App events (button clicks to add log messages)
 if Meteor.isClient
-  _.extend Template.sample_app,
-    events:
+  Template.sample_app.events
 
       "click .btn": (evt)->
         source = $("#server_or_client").val()
