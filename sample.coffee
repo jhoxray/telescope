@@ -1,13 +1,9 @@
-if Meteor.isServer
-  connect = Npm.require('connect')
-  __meteor_bootstrap__.app.use(connect.logger())
-
-  ###
-  #s.meteor_session?.collectionViews
-  for s in Meteor.default_server.stream_server.open_sockets
-    console.log "========================================================================================================"
-    console.dir s.meteor_session?.socket
-  ###
+###
+#s.meteor_session?.collectionViews
+for s in Meteor.default_server.stream_server.open_sockets
+  console.log "========================================================================================================"
+  console.dir s.meteor_session?.socket
+###
 
 #instanciating global logger
 TL = TLog.getLogger(TLog.LOGLEVEL_MAX, true, true)
@@ -110,7 +106,7 @@ if Meteor.isServer
       #s.meteor_session?.collectionViews
       for s in Meteor.default_server.stream_server.open_sockets
         console.log "========================================================================================================"
-        console.dir s.meteor_session?.socket
+        #console.dir s.meteor_session?.socket
       TL._log(msg,level)
 
 
