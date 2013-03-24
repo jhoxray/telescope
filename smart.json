@@ -6,10 +6,10 @@
   "packages": {
     "mini-pages": {},
       "observatory": {
-          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory/"
+          "path": "../Orion/packages/observatory/"
       },
       "observatory-testing": {
-          "path": "/Users/aantich/Development/meteor/Orion/packages/observatory-testing"
+          "path": "../Orion/packages/observatory-testing"
       }
   }
 }
