@@ -2,16 +2,13 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "devel",
-    "commit": "aad4b377be77deaced20dde42b53bfc1401e1d85"
+    "commit": "3aa9e1a36acdf8fee46e956c8bf24443bbe66fc0"
   },
   "dependencies": {
     "basePackages": {
       "mini-pages": {},
       "observatory": {
         "path": "../Orion/packages/observatory"
-      },
-      "observatory-testing": {
-        "path": "../Orion/packages/observatory-testing"
       }
     },
     "packages": {
@@ -22,9 +19,6 @@
       },
       "observatory": {
         "path": "../Orion/packages/observatory"
-      },
-      "observatory-testing": {
-        "path": "../Orion/packages/observatory-testing"
       },
       "page-js": {
         "git": "https://github.com/tmeasday/meteor-page-js.git",

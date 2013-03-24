@@ -1,5 +1,5 @@
 if Meteor.isServer
-  connect = __meteor_bootstrap__.require('connect')
+  connect = Npm.require('connect')
   __meteor_bootstrap__.app.use(connect.logger())
 
   ###

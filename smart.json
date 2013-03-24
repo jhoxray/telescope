@@ -7,9 +7,6 @@
     "mini-pages": {},
       "observatory": {
           "path": "../Orion/packages/observatory/"
-      },
-      "observatory-testing": {
-          "path": "../Orion/packages/observatory-testing"
       }
   }
 }
