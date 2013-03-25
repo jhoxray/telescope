@@ -27,9 +27,6 @@
       },
       "observatory-apollo": {
         "path": "../observatory-suite/observatory-apollo"
-      },
-      "observatory-jupiter": {
-        "path": "../observatory-suite/observatory-jupiter"
       }
     }
   }

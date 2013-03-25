@@ -85,10 +85,17 @@ Meteor.startup ->
   if Meteor.isServer
     #defining a server function for logging a server-originated log from the client. Confusing, eh?
     TLog.allowRemove -> false
+    # monitor = new Observatory.Monitor
+    # monitor.startMonitor(5000)
+
 
     Meteor.methods
       log_remote: (msg,level)->
         TL._log(msg,level)
+
+    Meteor.publish 'observatory_logs', ->
+      console.log "PUBLISHING!!!"
+      TLog._global_logs.find({})
 
     #TL.clear()
     TL.info("Starting up the app on the server")
