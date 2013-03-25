@@ -7,9 +7,7 @@
   "dependencies": {
     "basePackages": {
       "mini-pages": {},
-      "observatory": {
-        "path": "../observatory-suite/observatory"
-      }
+      "observatory": {}
     },
     "packages": {
       "mini-pages": {
@@ -18,7 +16,9 @@
         "commit": "3de8b93dd4355ebbdcfaed7891350b349ee54815"
       },
       "observatory": {
-        "path": "../observatory-suite/observatory"
+        "git": "https://github.com/jhoxray/observatory.git",
+        "tag": "v0.2.1",
+        "commit": "3a3302c086fc9e9c59adf9dfc01e88d746f6c501"
       },
       "page-js": {
         "git": "https://github.com/tmeasday/meteor-page-js.git",
@@ -26,7 +26,9 @@
         "commit": "c652f795a86498aa4609ab637a694710421cb218"
       },
       "observatory-apollo": {
-        "path": "../observatory-suite/observatory-apollo"
+        "git": "https://github.com/superstringsoftware/observatory-apollo.git",
+        "branch": "master",
+        "commit": "b754bb265ef3df07a406f2b342a169e951e6caee"
       }
     }
   }

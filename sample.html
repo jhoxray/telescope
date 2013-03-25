@@ -29,7 +29,7 @@
               <!-- <li class="{{navClassFor 'tests'}}"><a href="/tests">Test Framework</a></li> -->
 
             </ul>
-            <span class="label label-success pull-right">Observatory current version is 0.2.0</span>
+            <span class="label label-success pull-right">Observatory current version is 0.2.1</span>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -76,6 +76,10 @@
       </div>
       <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>NEW!</strong> <a href="logging#0.2.1">0.2.1</a> released on March, 25, 2013! -- http request logging, connection status...
+      </div>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>NEW!</strong> 0.2.0 released on March, 18, 2013!
       </div>
       <div class="alert alert-success">
@@ -114,6 +118,10 @@
                         Optional logging of currently logged-in users. Panel displays username, first email address (user.emails[0].address)
                         and finally userId if none of the previous options are found.
                     </li>
+                <li>
+                    Optional logging of all http requests with the originating IP address. Panel shows IP address for anonymous
+                    users and username / email for logged-in.
+                </li>
                     <li>Provides live monitoring of your app's templates with all events
                         (they tend to become too many very fast, so keeping track of all of them in one place is very useful),
                         helpers and key callbacks (created, rendered, destroyed), as well as
@@ -208,6 +216,28 @@
                 </p>
 
                 <h3>Revision history</h3>
+                <h5 id="0.2.1">0.2.1: March 25, 2013</h5>
+
+                <ul>
+                    <li>
+                        Added http requests logging via connect middleware hook
+                    </li>
+                    <li>
+                       Changed UI behavior so that Observatory modifies last child of &lt;body&gt; to be able to scroll
+                        main site content up
+                    </li>
+                    <li>
+                        Preparation for Meteor 0.6.0 in terms of variables scoping
+                    </li>
+                    <li>
+                        Internal package restructuring - moved core logger etc to a separate package (to be released separately soon)
+                    </li>
+                    <li>
+                        Connection status highlighting
+                    </li>
+                </ul>
+
+
                 <h5>0.2.0: March 18, 2013</h5>
 
                 First minor release with "real" Meteor (auth, users, ui improvements).

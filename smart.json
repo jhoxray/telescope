@@ -5,8 +5,6 @@
   },
   "packages": {
     "mini-pages": {},
-      "observatory": {
-          "path": "../observatory-suite/observatory/"
-      }
+    "observatory": {}
   }
 }
