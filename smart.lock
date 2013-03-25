@@ -2,13 +2,13 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "devel",
-    "commit": "3aa9e1a36acdf8fee46e956c8bf24443bbe66fc0"
+    "commit": "d2b7b63c86e2b86a5f3e51cb3c0776c5474920ca"
   },
   "dependencies": {
     "basePackages": {
       "mini-pages": {},
       "observatory": {
-        "path": "../Orion/packages/observatory"
+        "path": "../observatory-suite/observatory"
       }
     },
     "packages": {
@@ -18,12 +18,18 @@
         "commit": "3de8b93dd4355ebbdcfaed7891350b349ee54815"
       },
       "observatory": {
-        "path": "../Orion/packages/observatory"
+        "path": "../observatory-suite/observatory"
       },
       "page-js": {
         "git": "https://github.com/tmeasday/meteor-page-js.git",
         "tag": "v1.3.5",
         "commit": "c652f795a86498aa4609ab637a694710421cb218"
+      },
+      "observatory-apollo": {
+        "path": "../observatory-suite/observatory-apollo"
+      },
+      "observatory-jupiter": {
+        "path": "../observatory-suite/observatory-jupiter"
       }
     }
   }

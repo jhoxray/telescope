@@ -6,7 +6,7 @@
   "packages": {
     "mini-pages": {},
       "observatory": {
-          "path": "../Orion/packages/observatory/"
+          "path": "../observatory-suite/observatory/"
       }
   }
 }
