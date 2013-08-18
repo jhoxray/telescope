@@ -53,9 +53,10 @@ random_messages = [
 #putting some log messages
 resetTestMessages = ->
   
-  if TL.logCount() > 300
+  if TL.logCount() > 3000
     TLog._clear()
-    TL.warn("Cleared logs as they grew to more than 300 records")
+    TL.warn("Cleared logs as they grew to more than 3000 records")
+
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
   TL.warn("Don't you think you should write this in Haskell?","templates")
@@ -67,17 +68,6 @@ resetTestMessages = ->
   TL.info("Observatory supports different log levels / severity")
   TL.info("Also, you may want to add an optional module name to easier sort the logs. Like here.","my module")
   
-
-inspectObject = (obj)->
-  
-  TL.warn("Inspecting object " + obj.name)
-  for propName of obj
-    TL.info(propName + ": " + obj[propName])
-  TL.warn("Finished inspecting object ")
-
-dump_state1 = ->
-  for key of Session.key_deps
-    console.log(key + ": " + Session.get(key))
 
 
 #starting up Meteor and ensuring some log messages are put into db

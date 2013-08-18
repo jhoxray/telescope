@@ -2,33 +2,36 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "devel",
-    "commit": "d2b7b63c86e2b86a5f3e51cb3c0776c5474920ca"
+    "commit": "28ab8026fdf4a93262bff19081ef1b852b25ae10"
   },
   "dependencies": {
     "basePackages": {
       "mini-pages": {},
-      "observatory": {}
+      "observatory": {
+        "path": "../observatory-suite/observatory"
+      }
     },
     "packages": {
       "mini-pages": {
         "git": "https://github.com/cmather/meteor-mini-pages.git",
-        "tag": "v0.3.0",
-        "commit": "3de8b93dd4355ebbdcfaed7891350b349ee54815"
+        "tag": "v0.3.2",
+        "commit": "4d885ffb6d0108ee2e47a13a6296c98a2f7b5059"
       },
       "observatory": {
-        "git": "https://github.com/jhoxray/observatory.git",
-        "tag": "v0.2.1",
-        "commit": "3a3302c086fc9e9c59adf9dfc01e88d746f6c501"
+        "path": "../observatory-suite/observatory"
       },
-      "page-js": {
-        "git": "https://github.com/tmeasday/meteor-page-js.git",
+      "HTML5-History-API": {
+        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
+        "tag": "v4.0.0",
+        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      },
+      "page-js-ie-support": {
+        "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
         "tag": "v1.3.5",
-        "commit": "c652f795a86498aa4609ab637a694710421cb218"
+        "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
       },
       "observatory-apollo": {
-        "git": "https://github.com/superstringsoftware/observatory-apollo.git",
-        "branch": "master",
-        "commit": "b754bb265ef3df07a406f2b342a169e951e6caee"
+        "path": "../observatory-suite/observatory-apollo"
       }
     }
   }
