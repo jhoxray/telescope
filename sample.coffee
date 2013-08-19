@@ -9,7 +9,9 @@ for s in Meteor.default_server.stream_server.open_sockets
 #instanciating global logger
 
 #console.dir global #TLog
-TL = TLog.getLogger(TLog.LOGLEVEL_MAX, true, true)
+ 
+
+TL = TLog.getLogger()
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 if Meteor.isClient

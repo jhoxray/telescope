@@ -31,7 +31,9 @@
         "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
       },
       "observatory-apollo": {
-        "path": "../observatory-suite/observatory-apollo"
+        "git": "https://github.com/superstringsoftware/observatory-apollo.git",
+        "branch": "master",
+        "commit": "080a3dc8bcce1fa852e1836d16fa2aeeb77d15f3"
       }
     }
   }
