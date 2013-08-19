@@ -166,40 +166,7 @@
 
                 <h5 id="docLogging">Logging</h5>
 
-                <p>
-                    By defining an `observatory-settings` package which defines a global `ObservatorySettings`, you can now configure should_publish, [allow](docs.meteor.com/#allow), and control the logger constructor settings.
-
-Ex.
-
-<pre><code>
-ObservatorySettings = {
-    allow: {
-        insert: function (userId, doc) {
-            //make sure the userId is correct
-            return !(doc.uid && doc.uid !== userId);
-        },
-        update: function (userId, doc, fields, modifier) {
-            return false;
-        },
-        remove: function (userId, doc) {
-            return false;
-        }
-    },
-    log_http: false,
-    printToConsole: false,
-    should_publish: function (publish) {
-        //only publish logs to the admins
-        return Meteor.users.findOne({ _id: publish.userId, role: "admin"});
-    }
-};
-</code></pre>
-
-For the example of how it's done, please see <a href="https://github.com/jhoxray/telescope">the sample app</a>, but it's very 
-straightforward. Then you call <code>tlog = TLog.getLogger()</code> to get a logger with the settings you set up.
-
-Old way also works as described below, but you may need to comment out dependency on `observatory-settings` in 
-`observatory-apollo` `package.js`.
-                </p>
+                
 
                 <p>
                     In your application code call something like <code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true,true);</code>
@@ -261,7 +228,6 @@ Old way also works as described below, but you may need to comment out dependenc
                 <h5 id="0.2.5">0.2.5: August, 19, 2013</h5>
                 <ul>
                     <li>Updated to work with Meteor 0.6.5</li>
-                    <li>Added ObservatorySettings dependency for settings, please see sample app on how it works</li>
                 </ul>
 
                 <h5 id="0.2.1">0.2.1: March 25, 2013</h5>
