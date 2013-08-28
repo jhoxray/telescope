@@ -29,7 +29,7 @@
               <!-- <li class="{{navClassFor 'tests'}}"><a href="/tests">Test Framework</a></li> -->
 
             </ul>
-            <span class="label label-success pull-right">Observatory current version is 0.2.5</span>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -38,7 +38,7 @@
     <div class="container">
         <!-- Main hero unit for a primary marketing message or call to action -->
         <div class="hero-unit">
-            <div class="logo"></div>
+            <div class="logo"><span class="label label-success pull-right">Observatory current version is 0.2.6</span></div>
             <p>
                 Logging, monitoring &amp; testing for <a href="http://meteor.com">Meteor framework</a> since 2012.</p>
             <p>
@@ -77,16 +77,16 @@
 
       <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>NEW!</strong> <a href="logging#0.2.5">0.2.5</a> released on August, 19th, 2013! -- external settings, updated to work with Meteor 0.6.5...
+          <strong>NEW!</strong> <a href="logging#0.2.6">0.2.6</a> released on August, 27th, 2013! -- external settings, better user logging...
+      </div>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>NEW!</strong> <a href="logging#0.2.5">0.2.5</a> released on August, 19th, 2013! -- updated to work with Meteor 0.6.5...
       </div>
       
       <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>NEW!</strong> <a href="logging#0.2.1">0.2.1</a> released on March, 25, 2013! -- http request logging, connection status...
-      </div>
-      <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          0.2.0 released on March, 18, 2013!
       </div>
       <div class="alert alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -143,16 +143,17 @@
 
 
                 <h3 id="usage">Usage</h3>
+                <div class="alert">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>NOTE:</strong> The docs below may be outdated, up to date API description
+                    is always on the github: <a href="https://github.com/jhoxray/observatory">read here!</a>
+                </div>
 
                 <p>Observatory is a <a href="https://atmosphere.meteor.com">meteorite package</a> so installation is as easy as
                     running <code>mrt add observatory</code> in the shell and plugging
                     <code>&#123;&#123;>logs_bootstrap&#125;&#125;</code> somewhere in your templates, preferably before
                     the  <code>&#60;/body&#62;</code> tag. </p>
-                <p>
-                    If you don't like meteorite, you can install Observatory manually from
-                    <a href="https://github.com/jhoxray/observatory">its' Git repository</a> by copying the contents
-                    into your meteor application folder (e.g., in the lib/), killing package.js and installing
-                    dependencies (bootstrap, coffeescript, underscore, less).</p>
+
                 <p>Also feel free to <a href="https://github.com/jhoxray/telescope">browse the code</a> for this app.</p>
 
                 <h5 id="docPanel">Using the panel</h5>
@@ -169,10 +170,10 @@
                 
 
                 <p>
-                    In your application code call something like <code>TL = TLog.getLogger(TLog.LOGLEVEL_MAX,true,true);</code>
+                    In your application code call something like <code>TL = TLog.getLogger(); TL.setOptions(loglevel, want_to_print = true, log_user = false, log_http = true)</code>
                     (first argument is desired log level - messages with log level &#60;= that will be logged -
-                    the second is whether you also want to log to the console, and the last is whether you want to log
-                    the currently logged in user ID with each message).
+                    the second is whether you also want to log to the console, the third is whether you want to log
+                    the currently logged in user ID with each message and the last one is whether to log http requests.
                     To log a message call one of the following methods:</p>
                 <p><code>TL.fatal("application failed drastically","optional module name");<br/>
                     TL.error("some error occurred","optional module name");<br/>
@@ -185,14 +186,6 @@
                     TL.dir(obj,"additional message about the object to inspect","optional module name");<br/>
                 </code></p>
 
-                <p>
-                    Last 2 methods are new in 0.1.9 and eliminate some boilerplate in handling errors in catch
-                    statements and when you need to make a quick-n-dirty object inspection.<br/>
-                    To change the options after getting the logger, call <code>TL.setOptions(loglevel, want_to_print = true, log_user = false)</code>.
-                    Supported log levels are: <code>Tlog.LOGLEVEL_FATAL, TLog.LOGLEVEL_ERROR, TLog.LOGLEVEL_WARNING,
-                    TLog.LOGLEVEL_INFO, TLog.LOGLEVEL_VERBOSE, TLog.LOGLEVEL_DEBUG</code>. Pass one of these to either <code>getLogger()</code> or
-                    <code>setOptions()</code> calls.
-                    </p>
 
                 <p>
                     There's more details, full API documentation, including how Observatory stores logs, which fields are
@@ -224,88 +217,7 @@
                     or <a href="http://superstringsoftware.com">leave a comment</a> in our blog.
                 </p>
 
-                <h3>Revision history</h3>
-                <h5 id="0.2.5">0.2.5: August, 19, 2013</h5>
-                <ul>
-                    <li>Updated to work with Meteor 0.6.5</li>
-                </ul>
 
-                <h5 id="0.2.1">0.2.1: March 25, 2013</h5>
-
-                <ul>
-                    <li>
-                        Added http requests logging via connect middleware hook
-                    </li>
-                    <li>
-                       Changed UI behavior so that Observatory modifies last child of &lt;body&gt; to be able to scroll
-                        main site content up
-                    </li>
-                    <li>
-                        Preparation for Meteor 0.6.0 in terms of variables scoping
-                    </li>
-                    <li>
-                        Internal package restructuring - moved core logger etc to a separate package (to be released separately soon)
-                    </li>
-                    <li>
-                        Connection status highlighting
-                    </li>
-                </ul>
-
-
-                
-                <h5>0.2.0: March 18, 2013</h5>
-
-                First minor release with "real" Meteor (auth, users, ui improvements).
-
-                <ul>
-                    <li>Properly logging currently logged-in user</li>
-                    <li>Works with Meteor 0.5.9</li>
-                    <li>Code highlighting in the Templates Internals</li>
-                    <li>Session as a separate panel</li>
-                    <li>Unit testing moved to a <a href="https://github.com/superstringsoftware/observatory-testing">separate package</a></li>
-                    <li>Keyboard based control of the panels ("~" and "ctrl + ~")</li>
-                    <li>Setting default panel states via Session</li>
-                </ul>
-
-                <h5>0.1.9: March 6, 2013</h5>
-
-                Update to support Meteor 0.5.7:
-
-                <ul>
-                    <li>New logging methods (debug, trace, dir)</li>
-                    <li>Meteor Authorization support</li>
-                    <li>Some clean up of the logs display in the panel</li>
-                    <li>Fixing template methods inspection for the new Meteor syntax</li>
-                    <li>Preview version of unit testing</li>
-                </ul>
-
-                <h5>0.1.8: Oct, 2012</h5>
-
-                Minor code clean up, ability to clear logs.
-
-                <h5>0.1.7</h5>
-
-                Some styling changes, module names support:
-
-                <ul>
-                    <li>added 2 themes: dark and light, switchable on the fly.</li>
-                    <li>added module names support to easier sort through logs.</li>
-                    <li>some css cleanup, started restyling to get away from Bootstrap dependency (still dependent though so if you use css names that are the same as Twitter Bootstrap is using you may get weird effects in your app - will remove in a future version).
-                    </li>
-                </ul>
-
-
-                <h5>0.1.5, 0.1.6</h5>
-
-                Bottom sliding panel with tabs added, monitoring / inspection capabilities added, files renamed, some cleanup started
-
-                <h5>0.1.1</h5>
-
-                Clean up for visibility / encapsulation, now need to use TLog.getLogger() instead of constructing directly
-
-                <h5>0.1</h5>
-
-                Initial commit
             </div>
         </div>
 </template>
