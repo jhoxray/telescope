@@ -4,9 +4,8 @@
     "branch": "devel"
   },
   "packages": {
-    "mini-pages": {},
     "observatory": {
-        "path": "../observatory-suite/observatory"
+        "path": "../observatory"
     }
   }
 }

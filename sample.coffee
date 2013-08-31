@@ -12,6 +12,7 @@ for s in Meteor.default_server.stream_server.open_sockets
  
 
 TL = TLog.getLogger()
+TL.setOptions(TLog.LOGLEVEL_DEBUG, false, true, true, true)
 TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 if Meteor.isClient
