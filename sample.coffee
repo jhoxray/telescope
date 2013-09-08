@@ -12,8 +12,8 @@ for s in Meteor.default_server.stream_server.open_sockets
  
 
 TL = TLog.getLogger()
-TL.setOptions(TLog.LOGLEVEL_DEBUG, false, true, true, true)
-TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
+TL.setOptions(TLog.LOGLEVEL_DEBUG, false, true, true, false)
+#TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 if Meteor.isClient
   Meteor.pages
@@ -56,9 +56,11 @@ random_messages = [
 #putting some log messages
 resetTestMessages = ->
   
+  ###
   if TL.logCount() > 3000
     TLog._clear()
     TL.warn("Cleared logs as they grew to more than 3000 records")
+  ###
 
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
