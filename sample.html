@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Observatory: powerful logging and monitoring package for Meteor">
     <meta name="author" content="SuperstringSoftware.com">
-
-
 </head>
 
 <body>
-
 {{>logs_bootstrap}}
 </body>
 
@@ -44,8 +41,6 @@
             <div class="logo"><span class="label label-success pull-right">Observatory current version is 0.2.6</span></div>
             <p>
                 Logging, monitoring &amp; testing for <a href="http://meteor.com">Meteor framework</a> since 2012.</p>
-
-            <span class="label label-info">test label</span>
             <p>
                 Observatory makes your <a href="http://meteor.com">Meteor</a> application development a breeze by providing
                 <a href="/logging#docLogging">easy logging API</a>, key application
@@ -62,7 +57,7 @@
             </p>-->
         </div>
 
-    {{>main}}
+    {{{yield}}}
         <hr>
 
         <footer>
@@ -294,4 +289,3 @@
 </template>
 
 
-<template name="setup"></template>
