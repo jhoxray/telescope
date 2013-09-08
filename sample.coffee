@@ -12,7 +12,7 @@ for s in Meteor.default_server.stream_server.open_sockets
  
 
 TL = TLog.getLogger()
-TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
+#TL.verbose("created Tlogger with loglevel " + TL.currentLogLevelName() + " and printing to console set to " + TL._printToConsole)
 
 if Meteor.isClient
   Meteor.pages
@@ -55,9 +55,11 @@ random_messages = [
 #putting some log messages
 resetTestMessages = ->
   
+  ###
   if TL.logCount() > 3000
     TLog._clear()
     TL.warn("Cleared logs as they grew to more than 3000 records")
+  ###
 
   TL.fatal("Something's really broken!")
   TL.error("There's an error, start debugging")
@@ -79,11 +81,12 @@ Meteor.startup ->
     TLog.allowRemove -> false
     # monitor = new Observatory.Monitor
     # monitor.startMonitor(5000)
+    Observatory.emitters.Monitor.startMonitor()
 
 
     Meteor.methods
       log_remote: (msg,level)->
-        TL._log(msg,level)
+        TL._emitWithSeverity(level, msg, null, 'user')
 
     Meteor.publish 'observatory_logs', ->
       console.log "PUBLISHING!!!"
@@ -123,7 +126,7 @@ if Meteor.isClient
 
         if source is "client"
           #easy, simply calling log function. BTW, DON'T use _log in your apps, it's a private method :)
-          TL._log(msg,i)
+          TL._emitWithSeverity(i, msg, null, 'user')
 
         else
           #tricky, need to call an actual method on the server so that the message logs with correct source

@@ -2,7 +2,7 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "devel",
-    "commit": "c4203e35000e308c95ded657cbf5fd64fc1b3ff3"
+    "commit": "ba34b2550bf4b73bb13e0ef79367ed18c79833c4"
   },
   "dependencies": {
     "basePackages": {
@@ -17,8 +17,8 @@
       },
       "observatory": {
         "git": "https://github.com/jhoxray/observatory.git",
-        "tag": "v0.2.6",
-        "commit": "a040ad3fea5161256a7baa8e529bd083189e213d"
+        "tag": "v0.2.7",
+        "commit": "b0ea12507b628d4ab9e907615aae2636c1b15dd1"
       },
       "HTML5-History-API": {
         "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
@@ -33,7 +33,7 @@
       "observatory-apollo": {
         "git": "https://github.com/superstringsoftware/observatory-apollo.git",
         "branch": "master",
-        "commit": "e75e37fb9653f230ab5242ca223925e34095df7a"
+        "commit": "07874bedc8c5b902cd913bf61037e87f03b516c3"
       }
     }
   }
