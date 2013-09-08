@@ -1,1 +1,1 @@
-mrt deploy --debug observatoryjs.com
+meteor deploy --settings settings.json --debug observatoryjs.com
