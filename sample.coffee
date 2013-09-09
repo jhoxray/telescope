@@ -27,6 +27,7 @@ resetTestMessages = ->
 Meteor.startup ->
   if Meteor.isServer
     Observatory.emitters.Monitor.startMonitor()
+    Observatory.meteorServer.publish -> true
     Meteor.methods
       log_remote: (msg,level)->
         TL._emitWithSeverity(level, msg, null, 'user')

@@ -44,7 +44,7 @@
                             <li><a href="#docAutoLogging">Automagical Logging</a></li>
                             <li><a href="#docManagement">Management &amp; Monitoring</a></li>
                             <li><a href="#docConfiguration">Advanced Configuration</a></li>
-                            
+                            <li><a href="#docExtension">Extending Observatory</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -124,8 +124,9 @@
                            running <code>mrt add observatory</code> in your Meteor app's directory. To view the logs locally, 
                            plug <code>&#123;&#123;>logs_bootstrap&#125;&#125;</code> somewhere in your templates, preferably before
                            the <code>&#60;/body&#62;</code> tag. However, we encourage you to get an account
-                           at <a href="http://vega.observatoryjs.com">Observatory: Vega</a> and enjoy <a href="/main/vega#">many more app management features</a> than mere logging as well as complete control over Observatory configuration, both for 
-                           localhost development and production Meteor applications.
+                           at <a href="http://vega.observatoryjs.com">Observatory: Vega</a> and enjoy <a href="/main/vega#">many more 
+                           application management features</a> than mere logging as well as complete control over Observatory 
+                           configuration, both for localhost development and production deployments of your Meteor applications.
                         </p>
 
                         
@@ -255,10 +256,21 @@ inspect = function(obj) {
 
 
 
-                        <h2 id="docManagement">Management and Monitoring</h2>
+                        <h2 id="docManagement"><span class="label label-success">new!</span> Management and Monitoring</h2>
                         <p>
-                            Coming soon! For now, see it in action at 
-                            <a href="http://vega.observatoryjs.com/demo">Observatory: Vega.</a>
+                            This part of Observatory is under heavy development, but basic API is simple and ready. 
+                            Just call <code>Observatory.emitters.Monitor.startMonitor(timePeriod)</code> on the server and 
+                            Observatory will record performance, health, users etc every <code>timePeriod</code> ms (default is 1 minute
+                            - if you don't provide your timePeriod to override).
+                            This information will be used by Vega to build charts, send out alerts, help you 
+                            analyze bottlenecks etc - the usual powerful application management and monitoring functionality for Meteor.
+                            See it in action at <a href="http://vega.observatoryjs.com/demo">Observatory: Vega.</a> 
+                        </p>
+                        <p>
+                            Even though Vega is very early in development, you may still want to start running Monitors
+                            in your apps, so that the statistics is being recorded and available for analysis when we roll out
+                            management and monitoring features. If you do, we recommend running monitor every 10-15 minutes
+                            to not overload the database.
                         </p>
 
 
@@ -299,7 +311,6 @@ var settings = {
     logUser: true, // log the user information?
     logHttp: true, // log http requests automagically?
     logDDP: false, // log DDP requests automagically?
-    prohibitAutoPublish: true // publish logs to all clients?
 };
 
 Observatory.setSettings(settings);
@@ -320,8 +331,7 @@ Observatory.setSettings(settings);
                         </p>
                         <h4>Control publish, insert and remove</h4>
                         <p>
-                            If you prohibit autopublish of the logs, you can configure who has access either via Observatory: Vega
-                            or programmatically: on the server, call 
+                            If you prohibit autopublish of the logs (only works via settings file!), you can configure who has access either via Observatory: Vega or programmatically: on the server, call 
                             <code>Observatory.meteorServer.publish(func);</code> where 
                             <code>func = function(userId);</code> is a function that takes a userId and returns 'true'
                             if you want to allow logs publishing for the given userId. For example, to publish logs only 
@@ -357,12 +367,39 @@ Observatory.meteorServer.publish(function(uid) {
 
                         </div>
                         <p>
+                            If you prohibit autopublishing, you also need to explicitly subscribe on the client to view the logs:
+                            <code>Meteor.subscribe(Observatory.getMeteorLogger().colName, numOfRecords)</code>. <strong>This is only
+                            relevant to Jupiter (local use), when using Vega you don't need to do any of this!</strong>
+                        </p>
+                        <p>
                             Same way, if you want to control which users you want to log from the client side (more granular control
                             is useful in production apps, where you may want to log only signed in users actions - to be able to 
                             track offenders just in case), assign similar function <code>f(uid)</code> to the MeteorLogger instance: 
                             <code>Observatory.getMeteorLogger().allowInsert = f</code>. Remove calls are controlled in the same
                             fashion: <code>Observatory.getMeteorLogger().allowRemove = f</code>, but it's much more practical
                             to use Observatory: Vega log management for this.
+                        </p>
+
+
+
+                        <h2 id="docExtension">Extending Observatory</h2>
+                        <p>
+                            Observatory has very modular architecture and as such is very easy to extend.
+                            Detailed docs on how to do this are somewhere on the roadmap, in the meantime
+                            feel free to browse the code of 
+                            <a href="https://github.com/superstringsoftware/observatory-galileo">Observatory: Galileo</a> 
+                            - foundational classes, implementing Meteor-independent
+                            variant of event emitter - listeners approach in coffeescript and
+                            <a href="https://github.com/superstringsoftware/observatory-apollo">Observatory: Apollo</a> 
+                            - Meteor-specific classes building up on the Galileo foundation.
+                        </p>
+                        <p>
+                            There's also some decscription of how Galileo is structured, along with annotated code, 
+                            <a href="http://superstringsoftware.github.io/observatory-galileo/">available here.</a>
+                        </p>
+                        <p>
+                            If you'd like to contribute to the development or submit an issue / feature request,
+                            please do so at <a href="https://github.com/superstringsoftware/observatory-apollo/issues">Apollo's github.</a>.
                         </p>
 
                         
@@ -449,7 +486,7 @@ emitMessage: (msg)->
   "Only emit 1 message that will be recorded by all subscribed Loggers"
         </code></pre>
         <p>
-            <a href="#">Read API docs or learn how to extend Observatory...</a>
+            <a href="#docInstallation">Read API docs</a> or learn <a href="#docExtension">how to extend Observatory...</a>
         </p>
     </div>
 </template>
