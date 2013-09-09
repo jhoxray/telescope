@@ -1,0 +1,11 @@
+{
+    "public": {
+        "observatorySettings": {
+        	"logLevel": "MAX",
+            "printToConsole": false,
+            "logUser": true,
+            "logHttp": true,
+            "prohibitAutoPublish": false
+        }
+    }
+}

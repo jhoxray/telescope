@@ -1,0 +1,200 @@
+@import "variables";
+
+.jupiter {
+  color: @clr-jupiter;
+}
+
+.vega {
+  color: @clr-vega;
+}
+
+.apollo {
+  color: @clr-apollo;
+}
+
+code {
+  background: inherit !important;
+}
+
+.label-info {
+  color: #fff;
+}
+
+// Single side border-radius
+.border-top-radius(@radius) {
+  border-top-right-radius: @radius;
+  border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+  border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+  border-bottom-right-radius: @radius;
+  border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+  border-top-left-radius: @radius;
+}
+
+.rounded-corners(@radius) {
+  .border-left-radius(@radius);
+  .border-bottom-radius(@radius);
+  .border-right-radius(@radius);
+  .border-top-radius(@radius);
+}
+
+// Drop shadows
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+  box-shadow: @shadow;
+}
+
+// **********************************************
+
+pre.code, pre {
+  background: inherit !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.shaded (@clr) {
+  color: @clr;
+  text-shadow: 1px 1px 10px @clr;
+}
+
+.main-picture {
+  height: 368px; position: relative; left: 0; top: 0; background: no-repeat url('/observatory-c.png');
+  //border-left: 1px solid #111;
+  //border-bottom: 1px solid #111;
+}
+
+.main-picture {
+  //border-left: desaturate(@brand-info, 30%) solid 1px;
+
+  h1,h2,h3 {
+    color: #000;
+    //text-shadow: 1px 0px #ccc;
+  }
+  a:hover .apollo,
+  .active .apollo {
+    color: @clr-apollo;
+    text-shadow: 1px 1px 10px @clr-apollo;
+  }
+  a:hover .jupiter,
+  .active .jupiter {
+    color: @clr-jupiter;
+    text-shadow: 1px 1px 10px @clr-jupiter;
+  }
+  a:hover .vega,
+  .active .vega {
+    color: @clr-vega;
+    text-shadow: 1px 1px 10px @clr-vega;
+  }
+
+  .apollo {
+    position: absolute;
+    top: 56px;
+    left: 20px;
+  }
+
+  .jupiter {
+    position: absolute; top: 126px; left: 230px;
+  }
+
+  .vega {position: absolute; top: 180px; left: 440px;}
+
+  .module-banner {
+    position: absolute; top: 270px; left: 250px;
+    padding: 10px 20px 10px 20px;
+    background: rgba(20,20,20,0.5);
+    .box-shadow(5px 5px 5px #333);
+    border: 1px dotted #333;
+    width: 340px;
+    height: 96px;
+    .rounded-corners(6px);
+    color: #eee;
+  }
+
+  p.apollo {
+    border-color: @clr-apollo;
+    background-color: fadeout(@clr-apollo, 90%);
+  }
+  p.jupiter {
+    border-color: @clr-jupiter;
+    background-color: fadeout(@clr-jupiter, 90%);
+  }
+  p.vega {
+    border-color: @clr-vega;
+    background-color: fadeout(@clr-vega, 90%);
+  }
+  p.apollo, p.jupiter, p.vega {
+    color: #ccc;
+  }
+}
+
+.navbar-observatory {
+  background: #111;
+  opacity: 0.8;
+  //border-bottom: 1px solid @clr-vega;
+
+
+  a, a:visited {
+    color: #fff;
+  }
+
+  li a:hover,
+  li.active {
+    background-color: #222;
+  }
+
+  .active .apollo,
+  a:hover.apollo {
+    .shaded(@clr-apollo);
+    border-bottom: 2px solid @clr-apollo;
+  }
+  .active .jupiter,
+  a:hover.jupiter {
+    .shaded(@clr-jupiter);
+    border-bottom: 2px solid @clr-jupiter;
+  }
+  .active .vega,
+  a:hover.vega {
+    .shaded(@clr-vega);
+    border-bottom: 2px solid @clr-vega;
+  }
+
+  a.navbar-brand {
+    .shaded(white);
+    //font-size: 1.2em;
+    //border-bottom: 2px solid #ccc;
+  }
+}
+
+.row-main {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  min-height: 360px;
+}
+
+.row-jupiter-feature {
+  margin-top: 40px;
+  //padding-top: 60px;
+  padding-bottom: 60px;
+  border-top: 1px dotted fadeout(@clr-jupiter, 60%);
+  background-color: @gray-dark;
+  opacity: 0.9;
+}
+
+.row-jupiter-feature-2 {
+  background-color: @clr-danube;
+  height: 800px;
+}
+
+.col-danube {
+  background-color: @clr-danube;
+  color: @clr-white-rock;
+  height: 100%;
+  margin: 0;
+}

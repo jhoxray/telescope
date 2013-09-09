@@ -1,0 +1,51 @@
+<template name="templateViewer">
+    <div class="col-md-12">
+        <div class="row" style="height: 350px; padding-bottom: 20px; background-color: #777;">
+            <div class="col-md-4 template-viewer">
+
+                    <h5>&#123;&#123;<select id="templateNames">
+                        {{#each allTemplates}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>&#125;&#125;</h5>
+                    <p style="padding-left: 12px;">
+                        <a href="#" class="function">created</a><br/>
+                        <a href="#" class="function">rendered</a><br/>
+                        <a href="#" class="function">destroyed</a>
+                    </p>
+
+                    <h5>{{currentTemplate}}.helpers</h5>
+                    <p style="padding-left: 12px;">
+                        {{#each helperNames currentTemplate}}
+                        <a href="#" data-method="helper" class="function">{{this}}</a><br/>
+                        {{/each}}
+                    </p>
+                    <h5>{{currentTemplate}}.events</h5>
+                    <p style="padding-left: 12px;">
+                        {{#each eventNames currentTemplate}}
+                        <a href="#" data-method="event" class="function">{{this}}</a><br/>
+                        {{/each}}
+                    </p>
+
+            </div>
+            <div class="col-md-8 template-viewer">
+                <h5>Code</h5>
+                <pre style="height: 100%;"><code id="templateCodeViewer">{{currentCode}}</code></pre>
+
+            </div>
+        </div>
+
+        <div class="row row-session">
+            <div class="col-md-5">
+                <h5>Session keys</h5>
+                {{#each sessionKeys}}
+                <a href="#" class="sessionKey" data-target="{{this}}">{{this}}</a><br/>
+                {{/each}}
+            </div>
+            <div class="col-md-7">
+                <h5>Session key value</h5>
+                <pre class="prettyjson">{{{currentSessionKey}}}</pre>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,13 @@
+@import "../../variables";
+
+pre.prettyjson
+{
+	color: @gray-light;
+	//outline: 1px solid #ccc; padding: 5px; margin: 5px; 
+	
+	.string { color: @brand-success; }
+	.number { color: @brand-warning; }
+	.boolean { color: @brand-info; }
+	.null { color: magenta; }
+	.key { color: @brand-danger; }
+}

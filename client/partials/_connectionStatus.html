@@ -1,0 +1,9 @@
+<template name='_connectionStatus'>
+	{{#with connectionStatus}}
+	{{#if connected}}
+	<span style="color: #22cc22;">on</span>
+	{{else}}
+	{{status}}... {{retryCount}} retries {{#if reason}}{{reason}}{{/if}}
+	{{/if}}
+	{{/with}}
+</template>

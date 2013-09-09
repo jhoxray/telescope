@@ -1,0 +1,68 @@
+<template name="logsTable">
+
+        <div class="observatory-responsive-logs">
+            {{#each localLogs}}
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="label lb-timestamp">{{format_timestamp timestamp}}</span>
+                    {{#if isServer}}<span class="label label-default">srv</span>
+                    {{else}}<span class="label label-primary">clt</span>{{/if}}
+                    <span class="label {{lb_loglevel_decoration}} small-font">{{loglevel_names severity}}</span>
+                    <span class="label label-default">{{getUser this}}</span>
+                    {{#if module}}
+                    <span class="label label-info">{{module}}</span>
+                    {{/if}}
+                </div>
+                <div class="col-md-8 {{lb_loglevel_row_decoration}}">
+                    <pre class="lb_message">{{{textMessage}}}</pre>
+                    {{#if object}}
+                    <pre class="prettyjson">{{{prettyJSON object}}}</pre>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        
+</template>
+
+
+<template name="logsTableTable">
+
+        <table class="table table-condensed table-striped observatory-table-logs">
+
+            <thead>
+            <tr class="lb_header">
+                <th>
+                    <a href="#">timestamp</a> :
+                    <a href="#">source</a> :
+                    <a href="#">severity</a> :
+                    <a href="#">user</a> :
+                    <a href="#">module</a>
+                </th>
+                <th><a href="#">message</a></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#each getSession "currentLogs"}}
+            <tr>
+                <td>
+                    <span class="label lb-timestamp">{{format_timestamp timestamp}}</span>
+                    {{#if isServer}}<span class="label label-default">srv</span>
+                    {{else}}<span class="label label-primary">clt</span>{{/if}}
+                    <span class="label {{lb_loglevel_decoration}} small-font">{{loglevel_names severity}}</span>
+                    <span class="label label-default">{{getUser this}}</span>
+                    {{#if module}}
+                    <span class="label label-info">{{module}}</span>
+                    {{/if}}
+                </td>
+                <td class="lb_message {{lb_loglevel_row_decoration}}">
+                    <pre class="prettyjson">{{{textMessage}}}</pre>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+</template>
+

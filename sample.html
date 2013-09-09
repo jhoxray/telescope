@@ -1,75 +1,8 @@
 
-  <head>
-    <meta charset="utf-8">
-    <title>Observatory: powerful logging and monitoring package for Meteor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Observatory: powerful logging and monitoring package for Meteor">
-    <meta name="author" content="SuperstringSoftware.com">
-</head>
 
-<body>
-{{>logs_bootstrap}}
-</body>
+  <template name="main_telescope">
 
-
-<template name="layout">
-
-    <a href="https://github.com/jhoxray/observatory">
-        <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 10000" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
-    </a>
-
-<div class="navbar navbar-fixed-top" id="topNavbar">
-      <div class="navbar-inner">
-        <div class="container">
-          
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="{{navClassFor 'main'}}"><a href="/">Home</a></li>
-              <li class="{{navClassFor 'logging'}}"><a href="/logging">Logging &amp; Monitoring</a></li>
-              <!-- <li class="{{navClassFor 'tests'}}"><a href="/tests">Test Framework</a></li> -->
-
-            </ul>
-
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-        <!-- Main hero unit for a primary marketing message or call to action -->
-        <div class="hero-unit">
-            <div class="logo"><span class="label label-success pull-right">Observatory current version is 0.2.6</span></div>
-            <p>
-                Logging, monitoring &amp; testing for <a href="http://meteor.com">Meteor framework</a> since 2012.</p>
-            <p>
-                Observatory makes your <a href="http://meteor.com">Meteor</a> application development a breeze by providing
-                <a href="/logging#docLogging">easy logging API</a>, key application
-                <a href="/logging#docMonitoring">internals monitoring</a> and
-                <a href="/tests">visual integrated test framework</a> all nicely presented right in the browser.
-                This site <em>is itself</em> a Meteor app and has Observatory installed. See the panel below? Check it out
-                (toggle panel modes by clicking the "O!" and "S!" buttons in the bottom left corner) and grab a copy for your project:
-                <code><a href="http://oortcloud.github.com/meteorite/">mrt</a> add observatory</code> in the shell
-                and <code>&#123;&#123;>logs_bootstrap&#125;&#125; &#60;/body&#62;</code> in your application templates. Yes,
-                it's <em>that</em> easy.
-            </p>
-
-            <!-- <p>Don't know what Meteor or Meteorite is? <a href="#">Read this tutorial</a> to get you started.
-            </p>-->
-        </div>
-
-    {{{yield}}}
-        <hr>
-
-        <footer>
-            <p>&copy; <a href="http://superstringsoftware.com">SuperstringSoftware</a> 2012-2013; logo by <a href="https://github.com/SachaG">SachaG</a></p>
-        </footer>
-
-    </div> <!-- /container -->
-</template>
-
-  <template name="main">
-
-      <div class="alert">
+      <div class="alert alert-warning">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>NOTE:</strong> This app showcases development version of Observatory which may be different from the
           one set up via "mrt add observatory".
@@ -88,22 +21,9 @@
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <strong>NEW!</strong> <a href="logging#0.2.1">0.2.1</a> released on March, 25, 2013! -- http request logging, connection status...
       </div>
-      <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          Toggle Observatory panel and Session by clicking "ctrl-~" and "~" keys.
-      </div>
-
   </template>
 
 <template name="logging_template">
-
-        <h4>Add some logs to see them updating live:</h4>
-        <div id="logs" class="sample_app">
-
-            {{>sample_app}}
-        </div>
-
-
         <!-- Example row of columns -->
         <div class="row">
             <div class="span8 offset1">
@@ -224,68 +144,45 @@
 
 
 <template name="sample_app">
-    <p>
-        
-        <select id="server_or_client" class="sample_select">
-            <option value="server">Server</option>
-            <option value="client">Client</option>
-        </select>
-        <input id="log_message" type="text" placeholder="Your clever log message goes here"/>
-    
-
-    <button class="btn btn-inverse" id="btn_fatal" severity="0">FATAL</button>
-    <button class="btn btn-danger" id="btn_error" severity="1">ERROR</button>
-    <button class="btn btn-warning" id="btn_warning" severity="2">WARN</button>
-    <button class="btn btn-info" id="btn_info" severity="3">INFO</button>
-    <button class="btn btn-success" id="btn_verbose" severity="4">VERBOSE</button>
-    <button class="btn" id="btn_debug" severity="5">DEBUG</button>
-    </p>
-
-</template>
-
-
-  <template name="tests">
-
-    <div class="row">
-        <div class="span8">
-            <div class="well">
-                <p>This is an early preview and not documented, but we needed a way to test the Meteor app
-                    with actual Meteor environment running so put this quickly together. See
-                    the code, it's pretty self-explanatory,
-                    roughly follows <a href="http://visionmedia.github.com/mocha/">Mocha</a> syntax and uses
-                    <a href="http://chaijs.com/">Chai</a> for assertion checks. Server tests won't run on
-                    Meteor.com as they don't have Chai installed, but if you npm install chai locally you'll be
-                    able to run server side tests as well.
-                </p>
-                <p>
-                    Currently, Testing is not included in the main Observatory package and is available
-                    in a separate github repo: <a href="https://github.com/superstringsoftware/observatory-testing">
-                    observatory-testing
-                    </a>.
-                </p>
-                <p>
-                    BTW, we would appreciate help with development of the testing framework for observatory - e.g.,
-                    modifying a standard package such as Mocha may be a much better idea! Leave a comment on github
-                    if you'd like to help!
-                </p>
-            </div>
+    <h3 class="jupiter">Observatory: Jupiter</h3>
+    <div class="well">
+        <p>
+            Powerfull Meteor logging for all your needs, recording both server and client events to mongo 
+            and optionally the console, with lightweight panel similar to the below live demo. 
+            Great during development and when not connected to the internet. </p>
+        <p>
+            Automagical logging and performance profiling of <code>http</code> and <code>DDP</code> protocols, 
+            <code>Collection</code> methods, <code>Templates</code> lifecycle, <code>Subscriptions</code> and
+            other key Meteor internals. Try adding some logs:
+        </p>
+        <div class="form-group">
+            <input id="log_message" type="text" class="form-control" placeholder="Your clever log message goes here"/>
         </div>
-    </div>
+        <p>
+        <button class="btn btn-xs btn-inverse btnSA" id="btn_fatal" severity="0">FATAL</button>
+        <button class="btn btn-xs btn-danger btnSA" id="btn_error" severity="1">ERROR</button>
+        <button class="btn btn-xs btn-warning btnSA" id="btn_warning" severity="2">WARN</button>
+        <button class="btn btn-xs btn-info btnSA" id="btn_info" severity="3">INFO</button>
+        <button class="btn btn-xs btn-success btnSA" id="btn_verbose" severity="4">VERBOSE</button>
+        <button class="btn btn-xs btnSA" id="btn_debug" severity="5">DEBUG</button>
+        <select id="server_or_client" class="sample_select">
+                <option value="server">Server</option>
+                <option value="client">Client</option>
+            </select>
 
-          {{>simple_tests}}
+        </p>
 
-
-  </template>
-
-<template name="notFound">
-    <div class="hero-unit">
-        <div class="logo"></div>
-
-        <h2>Page Not Found :(</h2>
-        <!-- <p>Don't know what Meteor or Meteorite is? <a href="#">Read this tutorial</a> to get you started.
-        </p>-->
+        <p>
+            Usage is as simple as <code>mrt add observatory</code>, plugging <code>&#123;&#123;&gt;logs_bootstrap&#125;&#125;</code> template before the <code>body</code> tag
+            and calling <code>tb = Observatory.getToolbox();</code> both on the client and on the server.
+        </p>
+        <p>
+            <a href="#">Read more on how to use powerful logging with Observatory...</a>
+        </p>
     </div>
 
 </template>
 
+
+  
 

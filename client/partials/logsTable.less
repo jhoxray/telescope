@@ -1,0 +1,118 @@
+@import "../variables";
+
+.lb_invisible {
+  display: none;
+}
+
+
+.observatory-responsive-logs {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  background: #222;
+
+  .label {
+    color: #eee;
+  }
+
+  .lb-timestamp {
+    color: @gray-light;
+    padding-left: 4px;
+
+  }
+
+  .row {
+    padding: 0;
+    border-bottom: #333 solid 1px;
+  }
+
+  .danger {
+    background: @brand-danger;
+  }
+
+  .warning {
+    background: @brand-warning;
+  }
+
+  .pre {
+    background: inherit;
+  }
+
+  .danger pre,
+  .warning pre,
+  .fatal-error pre {
+    color: #eee;
+  }
+
+  
+  .lb_message  {
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+    background: inherit;
+    color: @gray-lighter;
+    border: none;
+    outline: none;
+  }
+}
+
+table.observatory-table-logs {
+  position: relative;
+  height: 100%;
+  white-space: nowrap;
+  thead {
+    position: relative;
+  }
+  tbody {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    overflow: auto;
+    height: 90%;
+    width: 100%;
+
+  }
+
+  .lb_message pre {
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+    background: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+  }
+
+  .lb-timestamp {
+    color: @gray-light;
+    padding-left: 0;
+
+  }
+
+  .lb_message.danger pre,
+  .warning pre,
+  .fatal-error pre {
+    color: #eee;
+  }
+
+  .lb_message {
+    white-space: normal;
+  }
+}
+
+.lb_hidden {
+  display: none;
+}
+
+
+
+#lb_status_line {
+  position: absolute;
+  right: 10px;
+}
+.fatal-error,
+.label-fatal {
+  background-color: #722;
+}
+
+

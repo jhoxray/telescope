@@ -7,12 +7,7 @@ underscore
 coffeescript
 less
 spiderable
-mini-pages
-bootstrap
 observatory-galileo
 observatory-apollo
-observatory
 standard-app-packages
-HTML5-History-API
-page-js-ie-support
-webapp
+iron-router
