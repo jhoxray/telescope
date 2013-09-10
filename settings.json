@@ -6,7 +6,7 @@
             "logUser": true,
             "logHttp": true,
             "logDDP": false,
-            "prohibitAutoPublish": false
+            "prohibitAutoPublish": true
         }
     }
 }

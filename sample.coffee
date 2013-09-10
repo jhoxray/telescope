@@ -26,7 +26,7 @@ resetTestMessages = ->
 #starting up Meteor and ensuring some log messages are put into db
 Meteor.startup ->
   if Meteor.isServer
-    Observatory.emitters.Monitor.startMonitor()
+    Observatory.emitters.Monitor.startMonitor 300000
     Observatory.meteorServer.publish -> true
     Meteor.methods
       log_remote: (msg,level)->
