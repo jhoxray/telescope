@@ -368,7 +368,7 @@ Observatory.meteorServer.publish(function(uid) {
                         </div>
                         <p>
                             If you prohibit autopublishing, you also need to explicitly subscribe on the client to view the logs:
-                            <code>Meteor.subscribe(Observatory.getMeteorLogger().colName, numOfRecords)</code>. <strong>This is only
+                            <code>Observatory.subscribe(numOfRecords)</code>. <strong>This is only
                             relevant to Jupiter (local use), when using Vega you don't need to do any of this!</strong>
                         </p>
                         <p>
