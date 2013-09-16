@@ -1,5 +1,5 @@
 Observatory.logMeteor()
-Meteor.subscribe Observatory.getMeteorLogger().colName, 50
-
-
+if not @logSub?
+  #console.log 'subscribing'
+  @logSub = Meteor.subscribe Observatory.getMeteorLogger().colName, 50 
 

@@ -55,11 +55,13 @@ Template.layout.helpers
 Template.layout.events
   "mouseenter ul.modules-navs li": (e)->
     t = e.target.innerText
+    ###
     console.log t
     switch t.trim()
       when 'apollo' then console.log '/moon1.png'
       when 'jupiter' then console.log  '/jupiter.png'
       when 'vega' then console.log '/vega.png'
+    ###
 
 
 Template.main.events

@@ -35,10 +35,9 @@ Meteor.startup ->
     TL.info("Starting up the app on the server")
     resetTestMessages()
     
-    
   if Meteor.isClient
     TL.info("Starting up the app on the client")
     resetTestMessages()
-    
+      
 
 
